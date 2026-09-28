@@ -5,6 +5,7 @@ import { ArrowRight, Link2, FileText, Gauge, History, ChevronRight, MailBadge } 
 import insightsData from "@/data/insights.json";
 import { InsightsNewsletter } from "@/components/insights/InsightsNewsletter";
 import { InsightsCTA } from "@/components/insights/InsightsCTA";
+import { ShareButtons } from "@/components/insights/ShareButtons";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -265,19 +266,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </div>
 
               {/* Share Insight */}
-              <div>
-                <h3 className="font-inter font-bold text-[11px] text-[#7C8798] uppercase tracking-[0.08em] mb-4">
-                  Share this insight
-                </h3>
-                <div className="flex items-center gap-3">
-                  <button aria-label="Share on Twitter" className="w-9 h-9 rounded-full border border-[#E2E6ED] flex items-center justify-center text-[#5B6472] hover:border-[#0F58F5] hover:text-[#0F58F5] transition-colors bg-white shadow-sm">
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button aria-label="Share on Mail" className="w-9 h-9 rounded-full border border-[#E2E6ED] flex items-center justify-center text-[#5B6472] hover:border-[#0F58F5] hover:text-[#0F58F5] transition-colors bg-white shadow-sm">
-                    <MailBadge className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
+              <ShareButtons title={article.title} />
 
               {/* Related Insights */}
               <div className="flex flex-col gap-4">
