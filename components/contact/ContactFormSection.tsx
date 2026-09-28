@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ChevronDown, MapPin, Phone, Mail } from "lucide-react";
+import { ChevronDown, Flag, Phone, Mail } from "lucide-react";
 
 export const ContactFormSection = () => {
   return (
@@ -191,7 +191,7 @@ export const ContactFormSection = () => {
 
           <div className="bg-white rounded-xl p-6 lg:p-8 border border-[#E2E6ED] flex flex-col">
             <div className="w-12 h-12 rounded-full bg-[#F5F7FB] flex items-center justify-center mb-4">
-              <MapPin className="w-5 h-5 text-[#0B1220]" />
+              <Flag className="w-5 h-5 text-[#0F58F5]" />
             </div>
             <h4 className="text-[18px] leading-[24px] font-bold text-[#0B1220] mb-2">AdunniTrak Solutions Inc.</h4>
             <p className="text-[16px] leading-[20px] text-[#5B6472]">London, Ontario, Canada</p>
@@ -199,7 +199,7 @@ export const ContactFormSection = () => {
 
           <div className="bg-white rounded-xl p-6 lg:p-8 border border-[#E2E6ED] flex flex-col">
             <div className="w-12 h-12 rounded-full bg-[#F5F7FB] flex items-center justify-center mb-4">
-              <MapPin className="w-5 h-5 text-[#0B1220]" />
+              <Flag className="w-5 h-5 text-[#0F58F5]" />
             </div>
             <h4 className="text-[18px] leading-[24px] font-bold text-[#0B1220] mb-2">AdunniTrak Solutions Nigeria Ltd.</h4>
             <p className="text-[16px] leading-[26px] text-[#5B6472]">
@@ -209,21 +209,23 @@ export const ContactFormSection = () => {
 
           <div className="bg-white rounded-xl p-6 lg:p-8 border border-[#E2E6ED] flex flex-col">
             <div className="w-12 h-12 rounded-full bg-[#F5F7FB] flex items-center justify-center mb-4">
-              <Phone className="w-5 h-5 text-[#0B1220]" />
+              <Phone className="w-5 h-5 text-[#0F58F5]" />
             </div>
-            <h4 className="text-[18px] leading-[24px] font-bold text-[#0B1220] mb-2">Phone</h4>
+            <h4 className="text-[18px] leading-[24px] font-bold text-[#0B1220] mb-4">Phone</h4>
             <p className="text-[16px] leading-[26px] text-[#5B6472]">
-              +1 226 385 7309 (Canada)<br />
-              +234 803 458 7309 (Nigeria)
+              <span className='text-[#0F58F5] inline-flex'>+1 226 385 7309 </span>
+              (Canada)<br />
+              <span className='text-[#0F58F5]'> +234 803 458 7309</span>
+              (Nigeria)
             </p>
           </div>
 
           <div className="bg-white rounded-xl p-6 lg:p-8 border border-[#E2E6ED] flex flex-col">
             <div className="w-12 h-12 rounded-full bg-[#F5F7FB] flex items-center justify-center mb-4">
-              <Mail className="w-5 h-5 text-[#0B1220]" />
+              <Mail className="w-5 h-5 text-[#0F58F5]" />
             </div>
             <h4 className="text-[18px] leading-[24px] font-bold text-[#0B1220] mb-2">Email</h4>
-            <p className="text-[16px] leading-[26px] text-[#5B6472]">
+            <p className="text-[16px] leading-[26px] text-[#0F58F5]">
               agboola.shonekan@adunnitrak.com
             </p>
           </div>

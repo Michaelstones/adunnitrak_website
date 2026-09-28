@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, FileText, Link2, Gauge, History } from "lucide-react";
 import { SlideUp } from "@/components/animations/SlideUp";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
+import insightsData from "@/data/insights.json";
 
 /* ─── Types ─────────────────────────────────────────────── */
 export interface Article {
   id: string;
-  slug: string; // URL slug for the individual article page
+  slug: string;
   iconName: "FileText" | "Link2" | "Gauge" | "History";
   category: string;
   title: string;
@@ -25,66 +26,46 @@ interface InsightsHubProps {
   initialArticles?: Article[];
 }
 
-/* ─── Default CMS Fallback Data ────────────────────── */
+/* ─── Default CMS Data Mapping ────────────────────── */
 const DEFAULT_TOPICS = [
   "All topics",
   "Operations",
   "Downtime",
   "Maintenance",
-  "Reliabilty & FMEA",
+  "Reliability & FMEA",
   "Inventory & resources",
   "Workforce & shift management",
   "Adunni AI",
-  "Industrial & Digital transformation",
+  "Industrial digital transformation",
   "Product updates",
 ];
 
-const DEFAULT_ARTICLES: Article[] = [
-  {
-    id: "art-1",
-    slug: "most-plants-dont-have-a-data-problem-they-have-a-connection-problem",
-    iconName: "Link2",
-    category: "Industrial digital transformation",
-    title: "Most plants don't have a data problem — they have a connection problem",
-    description:
-      "Plants may have production records, downtime logs, maintenance systems and spreadsheets, yet still lack a connected view of what happened and what action followed.",
-    author: "Agboola Shonekan, C.Tech.",
-    date: "Publication date to be confirmed",
-  },
-  {
-    id: "art-2",
-    slug: "the-most-valuable-system-in-your-plant-isnt-written-down",
-    iconName: "FileText",
-    category: "Knowledge retention",
-    title: "The most valuable system in your plant isn't written down",
-    description:
-      "Experienced operators, technicians and supervisors often hold critical knowledge about equipment behaviour, temporary workarounds and recurring failures.",
-    author: "Agboola Shonekan, C.Tech.",
-    date: "Publication date to be confirmed",
-  },
-  {
-    id: "art-3",
-    slug: "how-connected-operational-records-support-quality",
-    iconName: "Gauge",
-    category: "Operations",
-    title: "How connected operational records support quality and process control",
-    description:
-      "Quality and process control depend on more than final inspection. Connected production records, deviations, downtime events provide context.",
-    author: "Agboola Shonekan, C.Tech.",
-    date: "Publication date to be confirmed",
-  },
-  {
-    id: "art-4",
-    slug: "why-detection-acknowledgement-repair-must-be-measured-separately",
-    iconName: "History",
-    category: "Downtime",
-    title: "Why detection, acknowledgement and repair must be measured separately",
-    description:
-      "One total downtime figure cannot explain where response delays occur. This article introduces distinct operational measurements.",
-    author: "Agboola Shonekan, C.Tech.",
-    date: "Publication date to be confirmed",
-  },
-];
+// Helper to determine icon based on category
+const getIconForCategory = (category: string): "FileText" | "Link2" | "Gauge" | "History" => {
+  const cat = category.toLowerCase();
+  if (cat.includes("transformation") || cat.includes("connected")) return "Link2";
+  if (cat.includes("operations") || cat.includes("control")) return "Gauge";
+  if (cat.includes("downtime") || cat.includes("history")) return "History";
+  return "FileText"; // Default fallback
+};
+
+// Map the detailed JSON structure to the flatter card structure
+const JSON_ARTICLES: Article[] = insightsData.articles.map((article) => {
+  // Extract the first paragraph block to use as the card description
+  const firstParagraph = article.blocks.find((b: any) => b.type === "paragraph")?.text || "";
+  const description = firstParagraph.length > 140 ? firstParagraph.substring(0, 140) + "..." : firstParagraph;
+
+  return {
+    id: article.slug,
+    slug: article.slug,
+    iconName: getIconForCategory(article.category),
+    category: article.category,
+    title: article.title,
+    description: description,
+    author: article.author.name,
+    date: article.publishedDate,
+  };
+});
 
 /* ─── Icon Map ───────────────────────────────────────────── */
 const IconMap = {
@@ -97,7 +78,7 @@ const IconMap = {
 /* ─── Component ──────────────────────────────────────────── */
 export function LatestArticles({
   initialTopics = DEFAULT_TOPICS,
-  initialArticles = DEFAULT_ARTICLES
+  initialArticles = JSON_ARTICLES, // Using the dynamically mapped JSON data
 }: InsightsHubProps) {
   const [activeTopic, setActiveTopic] = useState("All topics");
   const [searchQuery, setSearchQuery] = useState("");
@@ -164,10 +145,9 @@ export function LatestArticles({
         </div>
       </section>
 
-      {/* ─── Filtered Articles Grid Section (Navigates to Page) ─── */}
+      {/* ─── Filtered Articles Grid Section ─── */}
       <section className="py-16 lg:py-24 bg-[#F9FAFB]">
         <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
-
           <SlideUp>
             <div className="mb-12 max-w-[800px]">
               <span className="text-[#0F58F5] font-inter font-bold text-[12px] leading-[16px] tracking-[0.06em] uppercase mb-3 block">
@@ -193,7 +173,7 @@ export function LatestArticles({
                   return (
                     <StaggerItem key={article.id}>
                       <Link
-                        href={`/insight/${article.slug}`}
+                        href={`/insight/${article.slug}`} // Ensuring this routes correctly to your slug page
                         className="group flex flex-col h-full bg-white border border-[#E2E6ED] rounded-[16px] p-6 lg:p-8 hover:border-[#0F58F5]/30 hover:shadow-md transition-all cursor-pointer block"
                       >
                         <div className="mb-6">

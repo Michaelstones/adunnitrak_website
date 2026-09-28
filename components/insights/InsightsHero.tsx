@@ -18,7 +18,7 @@ export function InsightsHero() {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/insights-bg.jpg" // Add your blurred/background shelf image here
+          src="/images/insights-bg.png" // Add your blurred/background shelf image here
           alt="Industrial knowledge background"
           fill
           className="object-cover object-center"

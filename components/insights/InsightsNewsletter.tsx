@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SlideUp } from "@/components/animations/SlideUp";
 import { CheckCircle2, AlertCircle, X } from "lucide-react";
 
-export function InsightsNewsletter({ bg }: { bg?: string }) {
+export function InsightsNewsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [toastMessage, setToastMessage] = useState("");
@@ -42,7 +42,7 @@ export function InsightsNewsletter({ bg }: { bg?: string }) {
   return (
     <>
       {/* ─── Top Section: Newsletter Split ─── */}
-      <section className={`py-16 lg:py-24 ${bg ? `bg-[${bg}]` : 'bg-[#EEF1F6]'} relative`}>
+      <section className={`py-16 lg:py-24 'bg-[#EEF1F6] relative`}>
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <SlideUp>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

@@ -8,7 +8,7 @@ export default function PricingHero() {
       {/* Background Image & Overlays */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/pricing-hero-bg.png" // Ensure you have this image in your public folder
+          src="/images/pricing-hero-bg.jpg" // Ensure you have this image in your public folder
           alt="Industrial power plant at sunset"
           fill
           className="object-cover object-center"

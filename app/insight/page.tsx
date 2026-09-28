@@ -25,7 +25,12 @@ export default function InsightsPage() {
       <FromTheField />
       <IndustrialAIEducation />
       <InsightsNewsletter />
-      <InsightsCTA />
+      <InsightsCTA
+        bgColor="bg-[#fff]"
+        titleColor="text-[#0B1220]"
+        descColor="text-[#5B6472]"
+        hasBorder={true}
+      />
     </main>
   );
 }

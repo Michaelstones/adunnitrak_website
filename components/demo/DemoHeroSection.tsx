@@ -7,10 +7,10 @@ export const DemoHeroSection = () => {
     <section className="relative w-full min-h-[570px] flex items-center bg-navy-900 text-white overflow-hidden py-16 lg:py-24">
       {/* Background Image */}
       <Image
-        src="/images/demo/demo_hero_bg.png"
+        src="/images/demo_hero_bg.jpg"
         alt="Demo Background"
         fill
-        className="object-cover opacity-60 mix-blend-overlay"
+        className="object-cover opacity-90 mix-blend-overlay"
         priority
       />
 
@@ -19,11 +19,11 @@ export const DemoHeroSection = () => {
           <span className="text-[#1656E8] text-[12px] font-bold tracking-[0.06em] uppercase mb-4 block">
             Personalised AdunniTrak demonstration
           </span>
-          
+
           <h1 className="text-[36px] md:text-[56px] leading-[44px] md:leading-[64px] font-extrabold tracking-[-0.02em] mb-4">
             See how AdunniTrak can work around your operation
           </h1>
-          
+
           <p className="text-[16px] md:text-[18px] leading-[26px] md:leading-[28px] text-white/80 max-w-[566px] mb-6">
             A guided demonstration built around your plant, workflows and equipment.
           </p>
@@ -31,7 +31,7 @@ export const DemoHeroSection = () => {
           <p className="text-[16px] md:text-[18px] leading-[26px] md:leading-[28px] text-white/80 max-w-[566px] mb-8">
             Before the session, we learn about your facility, and configure the platform environment to reflect your actual operational reality.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-6">
             <Link href="#request-form" className="inline-flex items-center justify-center h-12 px-8 bg-[#1656E8] hover:bg-[#0F45C4] rounded-lg text-white font-bold text-[14px] transition-colors">
               Book your demonstration
