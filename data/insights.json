@@ -1,0 +1,67 @@
+{
+  "articles": [
+    {
+      "slug": "why-connected-shift-data-is-the-foundation-of-plant-wide-improvement",
+      "title": "Why connected shift data is the foundation of plant-wide improvement",
+      "category": "Operational intelligence",
+      "readTime": "5 min read",
+      "publishedDate": "July 12, 2024",
+      "heroImage": "/images/insight-1.png",
+      "author": {
+        "name": "Agboola Adio Shonekan, C.Tech.",
+        "role": "Founder and Chief Executive Officer",
+        "bio": "Experienced in industrial asset management, reliability engineering, and plant digital infrastructure. Building connected operational systems for modern industrial facilities.",
+        "avatar": "/images/avatar.jpg"
+      },
+      "tableOfContents": [
+        { "id": "where-data-lives", "label": "Where the data actually lives" },
+        { "id": "what-happens", "label": "What happens when information stays separated?" },
+        { "id": "chain-of-events", "label": "From isolated records to a connected chain of events" },
+        { "id": "three-signs", "label": "Three signs your plant has a connection problem" },
+        { "id": "why-changes", "label": "Why connected operational information changes" }
+      ],
+      "blocks": [
+        { "type": "paragraph", "text": "Industrial plants generate information across production, downtime, maintenance, reliability, inventory and shift activity. The difficulty is often not the absence of data, but the fact that records, people and decisions remain separated." },
+        { "type": "image", "src": "/images/article-schematic.jpg", "alt": "Connected plant schematic map" },
+        { "type": "paragraph", "text": "Plants may have production records, downtime logs, maintenance systems and spreadsheets, yet still lack a connected view of what happened and what action followed. This disconnect creates blind spots that compound across shifts." },
+        { "type": "h2", "id": "where-data-lives", "text": "Where the data actually lives" },
+        { "type": "paragraph", "text": "Experienced operators, technicians and supervisors hold critical insights into equipment behavior, temporary workarounds, and recurring failures. Because this data is siloed across disparate spreadsheets and shift logs, institutional knowledge evaporates during shift handovers." },
+        { "type": "quote_border", "text": "The problem is rarely that organizations do not record enough. It is that what gets recorded remains separated. Information that lives in isolation cannot coordinate work." },
+        { "type": "h2", "id": "what-happens", "text": "What happens when information stays separated?" },
+        { "type": "paragraph", "text": "When information is trapped in informal conversations or disconnected documents, plant leadership loses the ability to trace root causes or audit historical decisions effectively." },
+        { "type": "bullet_list", "items": [
+          "A fault identified during a night shift is logged in a notebook and missed by the morning crew.",
+          "Maintenance completes a repair but operations is not notified in real time.",
+          "Shift handovers depend on memory rather than a confirmed view of outstanding work.",
+          "Safety incidents are investigated without full visibility into the equipment's history."
+        ]},
+        { "type": "quote_filled", "text": "Industrial systems should adapt to the way organisations operate, not require organisations to adapt to the technology." },
+        { "type": "h2", "id": "chain-of-events", "text": "From isolated records to a connected chain of events" },
+        { "type": "paragraph", "text": "Establishing continuity requires aligning operational observations directly with equipment hierarchies and maintenance task execution." },
+        { "type": "numbered_list", "items": [
+          { "title": "Define local record", "text": "Capture shift observations instantly at the point of activity using structured inputs rather than open text fields." },
+          { "title": "Review cross-department context", "text": "Correlate downtime events with maintenance work orders and spare parts inventory logs automatically." },
+          { "title": "Track historical maintenance", "text": "Maintain an immutable audit trail of past interventions to guide upcoming reliability planning." },
+          { "title": "Transparent forecasting", "text": "Empower plant supervisors with clear visibility into pending operational bottlenecks." }
+        ]},
+        { "type": "h2", "id": "three-signs", "text": "Three signs your plant has a connection problem" },
+        { "type": "grid_cards", "items": [
+          { "icon": "FileText", "title": "Disconnected shift records", "text": "Logs kept in personal notebooks or local desktop folders." },
+          { "icon": "Link2", "title": "Isolated silos", "text": "Maintenance and production running on separate metrics." },
+          { "icon": "Gauge", "title": "Manual spreadsheets", "text": "Prone to formula errors and delayed reporting." }
+        ]},
+        { "type": "h2", "id": "why-changes", "text": "Why connected operational information changes" },
+        { "type": "paragraph", "text": "When data flows freely between departments, accountability improves, response times drop, and institutional memory is preserved for future engineering generations." },
+        { "type": "buttons", "items": [
+          { "label": "Explore the platform", "href": "/platform", "primary": true },
+          { "label": "Book a live demo", "href": "/demo", "primary": false }
+        ]}
+      ],
+      "relatedInsights": [
+        { "slug": "the-most-valuable-system-in-your-plant", "category": "Knowledge retention", "title": "The most valuable system in your plant isn't written down", "author": "Agboola Shonekan", "icon": "FileText" },
+        { "slug": "most-plants-dont-have-a-data-problem", "category": "Industrial digital transformation", "title": "Most plants don't have a data problem — they have a connection problem", "author": "Agboola Shonekan", "icon": "Link2" },
+        { "slug": "how-connected-operational-records-support-quality", "category": "Operations", "title": "How connected operational records support quality and process control", "author": "Agboola Shonekan", "icon": "Gauge" }
+      ]
+    }
+  ]
+}

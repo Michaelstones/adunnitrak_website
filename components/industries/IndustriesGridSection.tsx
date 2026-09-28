@@ -17,42 +17,42 @@ export const IndustriesGridSection = () => {
       id: "aggregates",
       title: "Aggregates & Quarries",
       description: "Connect extraction, crushing, screening, washing, and loadout.",
-      image: "/images/industries/aggregates.png",
+      image: "/images/industriesImage1.jpg",
       href: "#aggregates"
     },
     {
       id: "mining",
       title: "Mining & Mineral Processing",
       description: "Create operational visibility across mining, material handling and processing.",
-      image: "/images/industries/mining.png",
+      image: "/images/industriesImage2.jpg",
       href: "#mining"
     },
     {
       id: "cement",
       title: "Cement Manufacturing",
       description: "Connect raw-material handling, production processes and dispatch.",
-      image: "/images/industries/cement.png",
+      image: "/images/industriesImage3.png",
       href: "#cement"
     },
     {
       id: "steel",
       title: "Iron & Steel",
       description: "Coordinate production facilities, utilities, workshops and logistics.",
-      image: "/images/industries/steel.png",
+      image: "/images/industriesImage4.png",
       href: "#steel"
     },
     {
       id: "power",
       title: "Power & Utilities",
       description: "Connect generation, water processing, maintenance and shift operations.",
-      image: "/images/industries/power.png",
+      image: "/images/industriesImage5.png",
       href: "#power"
     },
     {
       id: "heavy-manufacturing",
       title: "Heavy Manufacturing",
       description: "Connect production lines, equipment events, resources and shifts.",
-      image: "/images/industries/heavy_mfg.png",
+      image: "/images/industriesImage6.png",
       href: "#heavy-manufacturing"
     }
   ];

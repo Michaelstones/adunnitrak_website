@@ -8,7 +8,7 @@ export const IndustriesHeroSection = () => {
     <section className="relative w-full h-[530px] flex items-center bg-navy-900 text-white overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/industries/hero_bg.png"
+        src="/images/industriesHero.jpg"
         alt="Industrial Operations"
         fill
         className="object-cover opacity-40 mix-blend-overlay"

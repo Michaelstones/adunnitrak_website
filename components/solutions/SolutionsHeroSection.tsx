@@ -1,5 +1,4 @@
-
-import { Check, ArrowRight, } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,24 +20,33 @@ export const SolutionsHeroSection = () => {
           </h1>
 
           <p className="t-body-lg text-text-muted text-white/70 mb-4">
-            Bring people, processes and operational data together.
+            Bring people, processes and operational data together in one intelligent workflow.
           </p>
           <p className="t-body-lg text-text-muted text-white/70 mb-8">
-            AdunniTrak helps industrial teams move from disconnected systems to a unified operational record.
+            AdunniTrak helps industrial teams move from disconnected records and isolated activities to coordinated operational action — configured around your facility, equipment hierarchy, workflows, responsibilities and terminology.
           </p>
 
           <ul className="flex flex-col gap-3 mb-10">
             <li className="flex items-start gap-3">
-              <Check className="w-5 h-5 text-action-primary shrink-0 mt-0.5" />
-              <span className="t-body-lg text-white/90">Configured around your operation, not a generic one</span>
+              <div 
+  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
+  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+/>
+              <span className="t-body-lg text-white/90">Configured around your operation, not a generic one-size-fits-all system.</span>
             </li>
             <li className="flex items-start gap-3">
-              <Check className="w-5 h-5 text-action-primary shrink-0 mt-0.5" />
-              <span className="t-body-lg text-white/90">Connected across operational functions, not a collection of silos</span>
+                     <div 
+  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
+  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+/>
+              <span className="t-body-lg text-white/90">Connected across operational functions, not a collection of isolated tools.</span>
             </li>
             <li className="flex items-start gap-3">
-              <Check className="w-5 h-5 text-action-primary shrink-0 mt-0.5" />
-              <span className="t-body-lg text-white/90">Supported by Adunni AI, grounded in your approved procedures</span>
+                       <div 
+  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
+  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+/>
+              <span className="t-body-lg text-white/90">Supported by Adunni AI, grounded in your approved operational context.</span>
             </li>
           </ul>
 

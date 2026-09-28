@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, X } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -55,50 +55,62 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-white py-16 md:py-24 px-5 md:px-8">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 justify-between">
+    <section className="bg-white py-16 lg:py-24 px-6 lg:px-[24px]">
+      <div className="max-w-[1302px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 justify-between items-start">
 
           {/* Left Sticky Header */}
           <div className="lg:w-[423px] flex flex-col shrink-0">
             <div className="lg:sticky lg:top-28">
-              <span className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.06em] text-[#0F58F5] uppercase">
+              <span className="font-inter font-bold text-[12px] leading-[16px] tracking-[0.06em] text-[#0F58F5] uppercase block mb-3">
                 Platform questions
               </span>
-              <h2 className="font-sans font-extrabold text-[24px] md:text-[30px] leading-[32px] md:leading-[38px] tracking-[-0.01em] text-[#0F1424] pt-4">
+              <h2 className="font-inter font-extrabold text-[28px] md:text-[36px] lg:text-[40px] leading-[1.2] tracking-[-0.01em] text-[#0B1220]">
                 Understanding how AdunniTrak works
               </h2>
             </div>
           </div>
 
-          {/* Right Accordion */}
-          <div className="flex-1 bg-[#EDEFF5] rounded-lg p-4 md:p-6 lg:p-8 flex flex-col w-full lg:max-w-[753px]">
+          {/* Right Accordion with Smooth Animation */}
+          <div className="flex-1 bg-[#EDEFF5] rounded-[16px] p-6 md:p-8 flex flex-col w-full border border-[#E2E6ED]">
             {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div
                   key={idx}
-                  className="flex flex-col border-b border-[#ECEDEE] last:border-b-0"
+                  className="flex flex-col  last:border-b-0"
                 >
                   <button
                     onClick={() => toggleOpen(idx)}
-                    className="flex flex-row items-center justify-between py-4 md:py-6 text-left"
+                    className="flex flex-row items-center justify-between py-5 text-left group cursor-pointer w-full"
                   >
-                    <span className="font-sans font-semibold text-[16px] leading-[24px] text-[#0F1424] pr-4">
+                    <span className="font-inter font-semibold text-[16px] md:text-[18px] leading-[26px] text-[#0B1220] pr-4 group-hover:text-[#0F58F5] transition-colors">
                       {faq.question}
                     </span>
-                    <span className="text-[#0F58F5] shrink-0">
-                      {isOpen ? <X size={22} /> : <Plus size={22} />}
-                    </span>
+                    <div className=" flex items-center justify-center shrink-0 ">
+                      <Plus 
+                        size={18} 
+                        className={`text-[#0F58F5] transition-transform duration-300 ${
+                          isOpen ? "rotate-45" : "rotate-0"
+                        }`} 
+                      />
+                    </div>
                   </button>
 
-                  {isOpen && (
-                    <div className="pb-6 pr-8">
-                      <p className="font-sans font-normal text-[14px] md:text-[16px] leading-[20px] text-[#525A72]">
+                  {/* Smooth Height & Opacity Transition */}
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen 
+                        ? "grid-rows-[1fr] opacity-100 pb-6" 
+                        : "grid-rows-[0fr] opacity-0 pb-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="font-inter font-normal text-[15px] leading-[24px] text-[#5B6472] pr-4">
                         {faq.answer}
                       </p>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

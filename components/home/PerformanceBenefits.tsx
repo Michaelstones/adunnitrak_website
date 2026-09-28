@@ -50,13 +50,11 @@ export default function PerformanceBenefits() {
         </div>
 
         {/* 4x2 benefits grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-8 border-t border-[#E3E6EF]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-8 bg-white">
           {benefits.map((item, idx) => (
-            <div key={idx} className="flex flex-col gap-3">
+            <div key={idx} className="flex flex-col gap-3 p-4  rounded-lg bg-[#fff] shadow-md">
               {/* Icon dot */}
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#EAEEF6]">
-                <div className="w-3 h-3 rounded-full bg-[#1656e8]" />
-              </div>
+           
               <h4 className="font-sans font-semibold text-[16px] leading-[24px] text-[#0B1220]">
                 {item.title}
               </h4>

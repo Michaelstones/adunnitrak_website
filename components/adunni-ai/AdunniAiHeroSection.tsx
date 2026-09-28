@@ -7,7 +7,7 @@ export const AdunniAiHeroSection = () => {
     <section className="relative w-full min-h-[646px] flex items-center bg-[#071A33] text-white overflow-hidden py-16 lg:py-24">
       {/* Background Image */}
       <Image
-        src="/images/adunni-ai/hero_bg.png"
+        src="/images/adunni-hero.png"
         alt="Adunni AI Background"
         fill
         className="object-cover opacity-60 mix-blend-overlay"
