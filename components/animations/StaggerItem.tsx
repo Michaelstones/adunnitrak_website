@@ -7,11 +7,13 @@ interface StaggerItemProps {
   children: ReactNode;
   className?: string;
   yOffset?: number;
+  id?: string;
 }
 
-export function StaggerItem({ children, className = "", yOffset = 20 }: StaggerItemProps) {
+export function StaggerItem({ children, className = "", yOffset = 20, id }: StaggerItemProps) {
   return (
     <motion.div
+      id={id}
       variants={{
         hidden: { opacity: 0, y: yOffset },
         visible: {

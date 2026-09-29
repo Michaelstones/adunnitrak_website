@@ -1,6 +1,10 @@
-import { Check, ArrowRight } from "lucide-react";
+"use client";
+
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export const SolutionsHeroSection = () => {
   return (
@@ -12,7 +16,7 @@ export const SolutionsHeroSection = () => {
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-8 relative z-10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
         {/* Left Content Box */}
-        <div className="flex flex-col w-full lg:max-w-[620px]">
+        <SlideUp className="flex flex-col w-full lg:max-w-[620px]">
           <span className="t-overline text-action-primary mb-4 block">Connected solutions for industrial operations</span>
 
           <h1 className="t-display mb-6">
@@ -52,7 +56,7 @@ export const SolutionsHeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link href="/book-demo" className="btn-primary w-full sm:w-auto group flex items-center justify-center">
+            <Link href="/demo" className="btn-primary w-full sm:w-auto group flex items-center justify-center">
               Book a live demo
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -60,10 +64,10 @@ export const SolutionsHeroSection = () => {
               Explore solutions
             </Link>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Right Asset Box */}
-        <div className="w-full relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] flex items-center justify-center lg:justify-end">
+        <FadeIn delay={0.3} className="w-full relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] flex items-center justify-center lg:justify-end">
           <div className="relative w-full max-w-[600px] h-full">
             <Image
               src="/images/solutions/hero_image.png"
@@ -73,7 +77,7 @@ export const SolutionsHeroSection = () => {
               priority
             />
           </div>
-        </div>
+        </FadeIn>
 
       </div>
     </section>

@@ -1,4 +1,10 @@
 
+"use client";
+
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
+
 interface TimelineItem {
   year: string;
   title: string;
@@ -46,19 +52,19 @@ const TIMELINE_ITEMS: TimelineItem[] = [
 export default function AboutTimeline() {
   return (
     <section className="bg-white py-[96px]">
-      <div className="w-full  mx-auto px-5 lg:px-[32px]">
+      <div className="w-full mx-auto px-5 lg:px-[32px]">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-[16px] gap-y-[48px]">
 
           {/* Left: Heading — 4 cols */}
-          <div className="lg:col-span-4 flex flex-col gap-0">
+          <SlideUp className="lg:col-span-4 flex flex-col gap-0">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               From an observed problem to a connected platform
             </p>
             <h2 className="mt-[16px] font-inter font-extrabold text-[32px] md:text-[40px] leading-[1.2] tracking-[-0.01em] text-[#0F1424] whitespace-nowrap">
               The AdunniTrak journey
             </h2>
-          </div>
+          </SlideUp>
 
           {/* Right: Timeline rail — 7 cols (col 6-12) */}
           <div className="lg:col-span-7 lg:col-start-6 relative pl-[40px] lg:pl-[64px]">
@@ -66,19 +72,21 @@ export default function AboutTimeline() {
             {/* Vertical line — Figma: 2px wide, #ECEDEE fill, positioned at x=21 */}
             <div className="absolute top-[8px] bottom-0 left-[16px] lg:left-[21px] w-[2px] bg-[#ECEDEE]" />
 
-            {/* First item — no top padding */}
-            <div className="relative">
-              <TimelineDot isFirst />
-              <TimelineContent item={TIMELINE_ITEMS[0]} />
-            </div>
+            <StaggerContainer staggerChildren={0.1}>
+              {/* First item — no top padding */}
+              <StaggerItem className="relative">
+                <TimelineDot isFirst />
+                <TimelineContent item={TIMELINE_ITEMS[0]} />
+              </StaggerItem>
 
-            {/* Remaining items — 32px top padding */}
-            {TIMELINE_ITEMS.slice(1).map((item) => (
-              <div key={item.year} className="relative pt-[32px]">
-                <TimelineDot />
-                <TimelineContent item={item} />
-              </div>
-            ))}
+              {/* Remaining items — 32px top padding */}
+              {TIMELINE_ITEMS.slice(1).map((item) => (
+                <StaggerItem key={item.year} className="relative pt-[32px]">
+                  <TimelineDot />
+                  <TimelineContent item={item} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </div>
       </div>

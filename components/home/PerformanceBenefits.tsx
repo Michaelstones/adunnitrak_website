@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 const benefits = [
   {
@@ -40,40 +45,40 @@ export default function PerformanceBenefits() {
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-[1366px] mx-auto px-4 md:px-8 flex flex-col gap-8 md:gap-12">
         {/* Heading — spans ~8 cols */}
-        <div className="w-full max-w-[862px]">
+        <SlideUp className="w-full max-w-[862px]">
           <h2 className="font-sans font-extrabold text-[24px] md:text-[30px] leading-[32px] md:leading-[38px] tracking-[-0.01em] text-[#0B1220] mb-4">
             Move from reactive activity to connected performance
           </h2>
           <p className="font-sans font-normal text-[14px] leading-[22px] text-[#525A72]">
             AdunniTrak gives industrial organisations the structure and visibility required to respond faster, coordinate more effectively and convert daily operational activity into lasting improvement.
           </p>
-        </div>
+        </SlideUp>
 
         {/* 4x2 benefits grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-8 bg-white">
+        <StaggerContainer staggerChildren={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-8 bg-white">
           {benefits.map((item, idx) => (
-            <div key={idx} className="flex flex-col gap-3 p-4  rounded-lg bg-[#fff] shadow-md">
-              {/* Icon dot */}
-           
-              <h4 className="font-sans font-semibold text-[16px] leading-[24px] text-[#0B1220]">
-                {item.title}
-              </h4>
-              <p className="font-sans font-normal text-[14px] leading-[20px] text-[#525A72]">
-                {item.desc}
-              </p>
-            </div>
+            <StaggerItem key={idx}>
+              <div className="flex flex-col gap-3 p-4 rounded-lg bg-[#fff] shadow-md border border-[#ECEDEE] hover:border-[#0F58F5]/30 transition-all hover:-translate-y-1 h-full">
+                <h4 className="font-sans font-semibold text-[16px] leading-[24px] text-[#0B1220]">
+                  {item.title}
+                </h4>
+                <p className="font-sans font-normal text-[14px] leading-[20px] text-[#525A72]">
+                  {item.desc}
+                </p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Centered button */}
-        <div className="flex justify-center mt-4">
+        <SlideUp delay={0.3} className="flex justify-center mt-4">
           <Link
             href="/solutions"
             className="inline-flex items-center justify-center h-12 px-6 rounded-[8px] bg-[#0F58F5] font-sans font-semibold text-[14px] text-white transition-opacity hover:opacity-90"
           >
             Explore AdunniTrak Solutions
           </Link>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );

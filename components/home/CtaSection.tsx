@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
 
 export default function CtaSection() {
   return (
@@ -6,7 +9,7 @@ export default function CtaSection() {
       <div className="max-w-[1366px] mx-auto px-4 md:px-8">
         {/* Height 194px container, content centered */}
         <div className="h-auto md:h-[194px] flex items-center justify-center">
-          <div className="w-full max-w-[862px] flex flex-col items-center justify-center">
+          <SlideUp className="w-full max-w-[862px] flex flex-col items-center justify-center">
             {/* h2: Inter ExtraBold 30/38 -0.01em #FFFFFF center */}
             <h2 className="font-sans font-extrabold text-[24px] md:text-[30px] leading-[32px] md:leading-[38px] tracking-[-0.01em] text-white text-center">
               Ready to connect your industrial operations?
@@ -20,7 +23,7 @@ export default function CtaSection() {
               {/* Primary: #0F58F5 fill, padding 16px 24px, radius 8px */}
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center bg-[#0F58F5] rounded-lg py-4 px-6 font-sans font-bold text-[16px] text-white leading-none whitespace-nowrap hover:opacity-90 transition-opacity w-full sm:w-auto"
+                className="inline-flex items-center justify-center bg-[#0F58F5] rounded-lg py-4 px-6 font-sans font-bold text-[16px] text-white leading-none whitespace-nowrap hover:opacity-90 transition-opacity w-full sm:w-auto shadow-md"
               >
                 Book a Personalized Demonstration
               </Link>
@@ -32,7 +35,7 @@ export default function CtaSection() {
                 Explore Solutions
               </Link>
             </div>
-          </div>
+          </SlideUp>
         </div>
       </div>
     </section>

@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function PlatformHeroSection() {
   return (
@@ -17,7 +21,7 @@ export default function PlatformHeroSection() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-8 items-center w-full">
 
           {/* Left Content */}
-          <div className="flex flex-col w-full xl:max-w-[620px] relative z-20">
+          <SlideUp className="flex flex-col w-full xl:max-w-[620px] relative z-20">
             <span className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.06em] text-[#3FC3EE] uppercase mb-4">
               AI-powered industrial operational intelligence
             </span>
@@ -33,23 +37,25 @@ export default function PlatformHeroSection() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-8">
-              <button
+              <Link
+                href="/contact"
                 className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-6 bg-[#0F58F5] rounded-lg font-sans font-bold text-[16px] text-white transition-opacity hover:opacity-90 gap-2"
               >
                 Discuss Your Operational Needs
                 <ArrowRight size={16} />
-              </button>
-              <button
+              </Link>
+              <Link
+                href="/demo"
                 className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-6 bg-transparent border-[1.5px] border-[#ECEDEE] rounded-lg font-sans font-bold text-[16px] text-white transition-colors hover:bg-white/10 gap-2"
               >
                 Book a Demo
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
-          </div>
+          </SlideUp>
 
           {/* Right Image/Mockup */}
-          <div className="w-full relative h-[300px] sm:h-[400px] lg:h-[480px] xl:h-[449px] z-10 flex justify-center xl:justify-end">
+          <FadeIn delay={0.3} className="w-full relative h-[300px] sm:h-[400px] lg:h-[480px] xl:h-[449px] z-10 flex justify-center xl:justify-end">
             <div className="relative w-full max-w-[639px] h-full">
               <Image
                 src="/images/mockup-platform-hero-1fb634.png"
@@ -59,7 +65,7 @@ export default function PlatformHeroSection() {
                 priority
               />
             </div>
-          </div>
+          </FadeIn>
 
         </div>
       </div>

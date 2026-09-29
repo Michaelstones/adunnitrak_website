@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { ChevronDown, Flag, Phone, Mail } from "lucide-react";
 

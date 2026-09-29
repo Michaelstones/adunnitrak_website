@@ -1,9 +1,8 @@
-/* ── AboutValues — #3813:23450
-   #EAEEF6 bg, py-24
-   Layout:
-   - Top: 8-col heading block (EL-5a3c45f3 = span 8)
-   - Below (48px gap): grid of cards rows (150px + 170px rows, 12 cols, gap 16px)
-   - After second margin: left-bordered blue quote block (#0F58F5 left border, padding left 24px)  */
+"use client";
+
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 interface ValueCard {
   id: string;
@@ -61,42 +60,43 @@ export default function AboutValues() {
       <div className="w-full max-w-[1366px] mx-auto px-5 lg:px-[32px]">
 
         {/* Heading block — 8 cols */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-[16px] mb-6">
+        <SlideUp className="grid grid-cols-1 lg:grid-cols-12 gap-x-[16px] mb-6">
           <div className="lg:col-span-8 flex flex-col gap-0">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               Our product philosophy
             </p>
-            <h2 className="mt-[16px] font-inter font-extrabold text-[32px] md:text-[40px] leading-[1.2] tracking-[-0.01em] text-[#0B1220] max-w-[752px] whitespace-nowrap">
+            <h2 className="mt-[16px] font-inter font-extrabold text-[32px] md:text-[40px] leading-[1.2] tracking-[-0.01em] text-[#0B1220] max-w-[752px]">
               Technology should reflect the operation it supports
             </h2>
-            <p className="mt-[16px] font-inter font-normal text-[16px] leading-[24px] text-[#5B6472] max-w-[800px]">Industrial facilities differ in their equipment, workflows, priorities, terminology, responsibilities and operating conditions. Our approach is to understand those differences and configure AdunniTrak around the client's operational environment.</p>
+            <p className="mt-[16px] font-inter font-normal text-[16px] leading-[24px] text-[#5B6472] max-w-[800px]">Industrial facilities differ in their equipment, workflows, priorities, terminology, responsibilities and operating conditions. Our approach is to understand those differences and configure AdunniTrak around the client&apos;s operational environment.</p>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Value cards grid — mt-12 (48px) */}
-        <div className="mt-[48px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px]">
+        <StaggerContainer staggerChildren={0.08} className="mt-[48px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px]">
           {VALUE_CARDS.map((card) => (
-            <article
-              key={card.id}
-              id={card.id}
-              className="flex flex-col gap-[8px] rounded-[14px] border border-[#ECEDEE] bg-white p-[24px] shadow-[0px_1px_2px_0px_rgba(11,18,32,0.06)]"
-            >
-              <h3 className="text-[16px] leading-[24px] font-bold text-[#0B1220] font-inter">
-                {card.title}
-              </h3>
-              <p className="text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter">
-                {card.body}
-              </p>
-            </article>
+            <StaggerItem key={card.id}>
+              <article
+                id={card.id}
+                className="flex flex-col gap-[8px] rounded-[14px] border border-[#ECEDEE] bg-white p-[24px] shadow-[0px_1px_2px_0px_rgba(11,18,32,0.06)] hover:border-[#0F58F5]/30 hover:shadow-md transition-all h-full"
+              >
+                <h3 className="text-[16px] leading-[24px] font-bold text-[#0B1220] font-inter">
+                  {card.title}
+                </h3>
+                <p className="text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter">
+                  {card.body}
+                </p>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Left-bordered blue quote block — mt-12 (48px) */}
-        <div className="mt-[48px] border-l-[2px] border-[#0F58F5] pl-[24px]">
-          <blockquote className="text-[16px] font-bold  leading-[26px]  text-[#0B1220] font-inter w-full">
+        <SlideUp delay={0.3} className="mt-[48px] border-l-[2px] border-[#0F58F5] pl-[24px]">
+          <blockquote className="text-[16px] font-bold leading-[26px] text-[#0B1220] font-inter w-full">
             &ldquo;{BLUE_QUOTE}&rdquo;
           </blockquote>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );

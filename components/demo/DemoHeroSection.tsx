@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
 
 export const DemoHeroSection = () => {
   return (
@@ -15,7 +18,7 @@ export const DemoHeroSection = () => {
       />
 
       <div className="max-w-[1280px] w-full mx-auto px-5 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div className="lg:col-span-7 flex flex-col">
+        <SlideUp className="lg:col-span-7 flex flex-col">
           <span className="text-[#1656E8] text-[12px] font-bold tracking-[0.06em] uppercase mb-4 block">
             Personalised AdunniTrak demonstration
           </span>
@@ -44,7 +47,7 @@ export const DemoHeroSection = () => {
           <p className="text-[14px] leading-[20px] text-white/60">
             No generic presentation. Your demonstration is prepared specifically for your organisation.
           </p>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );

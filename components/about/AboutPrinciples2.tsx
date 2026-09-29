@@ -1,5 +1,9 @@
+"use client";
+
 import { Quote } from "lucide-react";
 import Image from "next/image";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 interface PrincipleCard {
     id: string;
@@ -26,7 +30,7 @@ export default function AboutPrinciples2() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
                     {/* Left Text Block (7 cols) */}
-                    <div className="lg:col-span-7 flex flex-col justify-center">
+                    <SlideUp className="lg:col-span-7 flex flex-col justify-center">
                         <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#3FC3EE] font-inter">
                             A message from the founder
                         </p>
@@ -49,10 +53,10 @@ export default function AboutPrinciples2() {
                                 AdunniTrak was created to help address this challenge — not by replacing the experience and judgement of industrial professionals, but by giving them a connected system in which operational activity, decisions and confirmed learning can be captured, shared and retained.
                             </p>
                         </div>
-                    </div>
+                    </SlideUp>
 
                     {/* Right Image & Quote Block (5 cols) */}
-                    <div className="lg:col-span-5 w-full flex flex-col gap-6">
+                    <FadeIn delay={0.2} className="lg:col-span-5 w-full flex flex-col gap-6">
 
                         {/* Flawlessly responsive image wrapper */}
                         <div className="relative w-full h-[350px] sm:h-[400px] lg:h-[450px] rounded-[14px] bg-[#050F1E] border border-white/10 overflow-hidden shadow-md">
@@ -71,13 +75,13 @@ export default function AboutPrinciples2() {
                                 <article
                                     key={card.id}
                                     id={card.id}
-                                    className="flex flex-col gap-4  "
+                                    className="flex flex-col gap-4"
                                 >
                                     <Quote className="text-[#0F58F5] w-6 h-6" />
 
                                     <div className="flex flex-col gap-1">
                                         <p className="text-[14px] leading-[22px] font-medium text-white font-inter">
-                                            "{card.body}"
+                                            &quot;{card.body}&quot;
                                         </p>
                                         <span className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#D4D4D4] font-inter whitespace-pre-line">
                                             {card.number}
@@ -86,13 +90,11 @@ export default function AboutPrinciples2() {
                                             {card.title}
                                         </h4>
                                     </div>
-
-
                                 </article>
                             ))}
                         </div>
 
-                    </div>
+                    </FadeIn>
 
                 </div>
             </div>

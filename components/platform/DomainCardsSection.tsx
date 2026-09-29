@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Gauge, PenTool, AreaChart, Boxes, Users, Settings2 } from "lucide-react";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 interface DomainCard {
   title: string;
@@ -52,7 +57,7 @@ export default function DomainCardsSection() {
     <section className="bg-[#EAEEF6] py-16 md:py-24 px-5 md:px-8">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-12">
         {/* Header */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <SlideUp className="grid grid-cols-1 md:grid-cols-12 gap-4">
           <div className="md:col-span-8 flex flex-col">
             <span className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.06em] text-[#0F58F5] uppercase">
               One operational environment
@@ -64,45 +69,45 @@ export default function DomainCardsSection() {
               AdunniTrak connects the activities and information required to understand what is happening, coordinate what needs to happen next and preserve what the organisation learns over time.
             </p>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <StaggerContainer staggerChildren={0.08} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {domains.map((domain, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col gap-4 bg-white border border-[#ECEDEE] shadow-[0px_1px_2px_0px_rgba(11,18,32,0.06)] rounded-[14px] p-6 flex flex-col h-full min-h-[228px]"
-            >
+            <StaggerItem key={idx}>
+              <div
+                className="flex flex-col gap-4 bg-white border border-[#ECEDEE] shadow-[0px_1px_2px_0px_rgba(11,18,32,0.06)] rounded-[14px] p-6 h-full min-h-[228px] hover:border-[#0F58F5]/30 hover:shadow-md transition-all"
+              >
 
-              <div className=" w-12 h-12 flex items-center justify-center shrink-0 rounded-lg">
-                {domain.icon}
+                <div className="w-12 h-12 flex items-center justify-center shrink-0 rounded-lg">
+                  {domain.icon}
+                </div>
+
+                <h3 className="font-sans font-bold text-[20px] leading-[28px] text-[#0F1424]">
+                  {domain.title}
+                </h3>
+                <p className="font-sans font-normal text-[14px] leading-[20px] text-[#525A72] flex-grow">
+                  {domain.desc}
+                </p>
+
+                <p className="flex flex-row items-center gap-2">
+                  <Link href={`/${domain.link}`} className="text-[#0F58F5] hover:underline font-semibold">
+                    Explore {domain.link}
+                  </Link>
+                  <ArrowRight className="w-4 h-4 text-[#0F58F5]" />
+                </p>
+
               </div>
-
-
-              <h3 className="font-sans font-bold text-[20px] leading-[28px] text-[#0F1424]">
-                {domain.title}
-              </h3>
-              <p className="font-sans font-normal text-[14px] leading-[20px] text-[#525A72] flex-grow">
-                {domain.desc}
-              </p>
-
-              <p className="flex flex-row items-center gap-2">
-                <Link href={`${domain.link}`} className="text-[#0F58F5]">
-                  Explore {domain.link}
-                </Link>
-                <ArrowRight className="w-4 h-4 text-[#0F58F5]" />
-              </p>
-
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Footer Text */}
-        <div className="flex justify-center text-center pt-8">
+        <SlideUp delay={0.2} className="flex justify-center text-center pt-8">
           <p className="font-sans font-normal text-[14px] leading-[20px] text-[#7C8798] max-w-[1302px]">
             The value of the platform comes from these domains working together. Information should not have to be recreated every time work moves between teams.
           </p>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );

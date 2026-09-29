@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 // Import your newly created global components
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { TawkChat } from "@/components/TawkChat";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <main className="flex-1 flex flex-col">{children}</main>
 
         <SiteFooter />
+        <TawkChat />
       </body>
     </html>
   );

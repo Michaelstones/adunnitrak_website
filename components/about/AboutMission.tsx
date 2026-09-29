@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function AboutMission() {
   return (
@@ -9,7 +13,7 @@ export default function AboutMission() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
           {/* Left: Text block (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
+          <SlideUp className="lg:col-span-7 flex flex-col">
             {/* Overline */}
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#1656E8]">
               Our mission
@@ -51,10 +55,10 @@ export default function AboutMission() {
                 drives every decision we make about our platform.
               </p>
             </div>
-          </div>
+          </SlideUp>
 
           {/* Right: Photo card (5 cols) */}
-          <div className="lg:col-span-5 w-full">
+          <FadeIn delay={0.2} className="lg:col-span-5 w-full">
             {/* Responsive height scale prevents squishing on mobile while maintaining desktop stature */}
             <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] rounded-[14px] overflow-hidden bg-[#F4F6FB] border border-[#E2E6ED] shadow-sm">
               <Image
@@ -66,7 +70,7 @@ export default function AboutMission() {
                 quality={100}
               />
             </div>
-          </div>
+          </FadeIn>
 
         </div>
       </div>

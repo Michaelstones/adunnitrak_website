@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function AboutNameMeaning() {
   return (
@@ -6,15 +10,17 @@ export default function AboutNameMeaning() {
       {/* Added max-w-[1280px] to constrain the overall layout properly on ultra-wide screens */}
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-8">
 
-        <span className="text-[#0F58F5] font-inter text-[12px] font-bold leading-[16px] tracking-[0.06em] uppercase mb-4 block">
-          The meaning behind our name
-        </span>
+        <SlideUp>
+          <span className="text-[#0F58F5] font-inter text-[12px] font-bold leading-[16px] tracking-[0.06em] uppercase mb-4 block">
+            The meaning behind our name
+          </span>
+        </SlideUp>
 
         {/* Balanced 2-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left: Heading & Graphic */}
-          <div className="flex flex-col items-start w-full">
+          <SlideUp className="flex flex-col items-start w-full">
 
             <h2 className="text-[#0F1424] font-inter text-[30px] font-extrabold leading-[38px] tracking-[-0.01em] mb-8">
               A name connected to value
@@ -30,10 +36,10 @@ export default function AboutNameMeaning() {
                 priority
               />
             </div>
-          </div>
+          </SlideUp>
 
           {/* Right: Heading + Body */}
-          <div className="flex flex-col gap-6 lg:max-w-[560px]">
+          <SlideUp delay={0.2} className="flex flex-col gap-6 lg:max-w-[560px]">
             <h3 className="font-inter font-extrabold text-[24px] md:text-[28px] leading-[32px] md:leading-[36px] tracking-[-0.01em] text-[#0B1220]">
               A decade of experience. A single-minded focus on operational
               outcomes.
@@ -45,7 +51,7 @@ export default function AboutNameMeaning() {
               </p>
 
               <p className="text-[16px] leading-[26px] font-normal text-[#5B6472] font-inter">
-                <span className="text-black font-bold">"Trak"</span> reflects the platform's role in capturing and connecting operational activity over time
+                <span className="text-black font-bold">&quot;Trak&quot;</span> reflects the platform&apos;s role in capturing and connecting operational activity over time
                 from production and downtime to maintenance, reliability, inventory and workforce action.
               </p>
 
@@ -53,7 +59,7 @@ export default function AboutNameMeaning() {
             <p className="mt-5 text-[20px] leading-[26px] font-semibold text-[#0F58F5]">
               AdunniTrak — where data meets diligence.
             </p>
-          </div>
+          </SlideUp>
 
         </div>
       </div>

@@ -1,6 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 type PlanRegion = "nigeria" | "international";
@@ -70,7 +73,7 @@ export default function PlanDetailsSplit() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
           {/* Left Column: Equipment Structure */}
-          <div className="flex flex-col">
+          <SlideUp className="flex flex-col">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               Equipment structure by plan
             </p>
@@ -78,25 +81,24 @@ export default function PlanDetailsSplit() {
               The right level of equipment visibility
             </h2>
 
-            <div className="mt-8 flex flex-col gap-4">
+            <StaggerContainer staggerChildren={0.08} className="mt-8 flex flex-col gap-4">
               {EQUIPMENT_CARDS.map((card) => (
-                <article
-                  key={card.plan}
-                  className="flex flex-col rounded-[12px] bg-white border border-[#E2E6ED] shadow-sm p-6"
-                >
-                  <h3 className="text-[16px] font-bold text-[#0B1220] font-inter">
-                    {card.plan}
-                  </h3>
-                  <p className="mt-2 text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter">
-                    {card.description}
-                  </p>
-                </article>
+                <StaggerItem key={card.plan}>
+                  <article className="flex flex-col rounded-[12px] bg-white border border-[#E2E6ED] shadow-sm p-6 hover:border-[#0F58F5]/30 transition-all">
+                    <h3 className="text-[16px] font-bold text-[#0B1220] font-inter">
+                      {card.plan}
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter">
+                      {card.description}
+                    </p>
+                  </article>
+                </StaggerItem>
               ))}
-            </div>
-          </div>
+            </StaggerContainer>
+          </SlideUp>
 
           {/* Right Column: Users & AI Usage */}
-          <div className="flex flex-col">
+          <SlideUp delay={0.2} className="flex flex-col">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               Users and Adunni AI usage
             </p>
@@ -104,41 +106,40 @@ export default function PlanDetailsSplit() {
               Built for collaborative industrial teams
             </h2>
 
-            <div className="mt-8 flex flex-col gap-4">
+            <StaggerContainer staggerChildren={0.08} className="mt-8 flex flex-col gap-4">
               {USERS_CARDS.map((card) => (
-                <article
-                  key={card.plan}
-                  className="flex flex-col rounded-[12px] bg-white border border-[#E2E6ED] shadow-sm p-6"
-                >
-                  <h3 className="text-[16px] font-bold text-[#0B1220] font-inter">
-                    {card.plan}
-                  </h3>
+                <StaggerItem key={card.plan}>
+                  <article className="flex flex-col rounded-[12px] bg-white border border-[#E2E6ED] shadow-sm p-6 hover:border-[#0F58F5]/30 transition-all">
+                    <h3 className="text-[16px] font-bold text-[#0B1220] font-inter">
+                      {card.plan}
+                    </h3>
 
-                  <div className="mt-2 text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter min-h-[22px]">
-                    {card.baseText}
+                    <div className="mt-2 text-[14px] leading-[22px] font-normal text-[#5B6472] font-inter min-h-[22px]">
+                      {card.baseText}
 
-                    {/* Dynamic Location-Based Pricing for Add-ons */}
-                    {card.nigeriaAddOn && card.intlAddOn && (
-                      <span
-                        className={`transition-opacity duration-300 ${!isMounted ? "opacity-0" : "opacity-100"
-                          }`}
-                      >
-                        {" · "}
-                        {planRegion === "nigeria"
-                          ? card.nigeriaAddOn
-                          : card.intlAddOn}
-                      </span>
-                    )}
-                  </div>
-                </article>
+                      {/* Dynamic Location-Based Pricing for Add-ons */}
+                      {card.nigeriaAddOn && card.intlAddOn && (
+                        <span
+                          className={`transition-opacity duration-300 ${!isMounted ? "opacity-0" : "opacity-100"
+                            }`}
+                        >
+                          {" · "}
+                          {planRegion === "nigeria"
+                            ? card.nigeriaAddOn
+                            : card.intlAddOn}
+                        </span>
+                      )}
+                    </div>
+                  </article>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Footer Note */}
             <p className="mt-6 text-[12px] leading-[18px] font-normal text-[#7C8798] font-inter">
               The Adunni AI allowance is shared across authorised users within the subscribed site.
             </p>
-          </div>
+          </SlideUp>
 
         </div>
       </div>

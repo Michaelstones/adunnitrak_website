@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 interface Industry {
   name: string;
@@ -65,36 +70,42 @@ export default function IndustriesSection() {
     <section className="bg-white py-12 md:py-20 px-2.5 border-b border-[#ECEDEE] shadow-[0px_2px_3px_0px_rgba(0,0,0,0.3),0px_6px_10px_4px_rgba(0,0,0,0.15)] relative z-10">
       <div className="max-w-[1366px] mx-auto flex flex-col items-center gap-8">
         {/* Label */}
-        <p className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.0625em] uppercase text-[#031231] text-center">
-          Purpose Built for Asset-Intensive Industries
-        </p>
+        <SlideUp>
+          <p className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.0625em] uppercase text-[#031231] text-center">
+            Purpose Built for Asset-Intensive Industries
+          </p>
+        </SlideUp>
 
         {/* Cards row */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <StaggerContainer staggerChildren={0.08} className="flex flex-wrap justify-center gap-4 w-full">
           {industries.map((ind, idx) => (
-            <div
+            <StaggerItem
               key={idx}
-              className="w-full sm:w-[calc(50%-8px)] md:w-[200px] h-auto md:h-[100px] flex flex-col items-center justify-center bg-white border border-[#ECEDEE] rounded-[16px] p-4 gap-4 hover:shadow-md transition-shadow cursor-pointer"
+              className="w-full sm:w-[calc(50%-8px)] md:w-[200px]"
             >
-              {/* Icon */}
-              <div className="w-8 h-8 flex items-center justify-center shrink-0">
-                {ind.icon}
+              <div className="w-full h-auto md:h-[100px] flex flex-col items-center justify-center bg-white border border-[#ECEDEE] rounded-[16px] p-4 gap-4 hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer">
+                {/* Icon */}
+                <div className="w-8 h-8 flex items-center justify-center shrink-0">
+                  {ind.icon}
+                </div>
+                {/* Label */}
+                <span className="font-sans font-semibold text-[14px] leading-[18px] text-center text-[#0F1424]">
+                  {ind.name}
+                </span>
               </div>
-              {/* Label */}
-              <span className="font-sans font-semibold text-[14px] leading-[18px] text-center text-[#0F1424]">
-                {ind.name}
-              </span>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* "View All Industries" button */}
-        <Link
-          href="/industries"
-          className="font-sans font-bold text-[16px] text-[#0F58F5] hover:opacity-80 transition-opacity"
-        >
-          View All Industries
-        </Link>
+        <SlideUp delay={0.2}>
+          <Link
+            href="/industries"
+            className="font-sans font-bold text-[16px] text-[#0F58F5] hover:opacity-80 transition-opacity"
+          >
+            View All Industries
+          </Link>
+        </SlideUp>
       </div>
     </section>
   );

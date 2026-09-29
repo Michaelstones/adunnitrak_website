@@ -1,7 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 interface FAQItem {
@@ -83,27 +86,27 @@ export default function PricingFAQ() {
 
   return (
     <section className="bg-white py-16 lg:py-24">
-      <div className="w-full  mx-auto px-5 md:px-8">
+      <div className="w-full mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
           {/* Left: Heading block (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col sticky top-8">
+          <SlideUp className="lg:col-span-4 flex flex-col sticky top-8">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               Pricing questions
             </p>
             <h2 className="mt-3 font-inter font-extrabold text-[28px] md:text-[36px] leading-[1.2] tracking-[-0.01em] text-[#0B1220]">
               What organisations may want to know
             </h2>
-          </div>
+          </SlideUp>
 
           {/* Right: Accordion container (8 cols) */}
-          <div className="lg:col-span-8 bg-[#F4F6F9] rounded-[16px] p-2 md:p-4 ">
-            <div className="flex flex-col">
+          <div className="lg:col-span-8 bg-[#F4F6F9] rounded-[16px] p-2 md:p-4">
+            <StaggerContainer staggerChildren={0.06} className="flex flex-col">
               {FAQ_ITEMS.map((item) => {
                 const isOpen = openId === item.id;
 
                 return (
-                  <div
+                  <StaggerItem
                     key={item.id}
                     id={item.id}
                     className="last:border-none"
@@ -139,10 +142,10 @@ export default function PricingFAQ() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerContainer>
           </div>
 
         </div>

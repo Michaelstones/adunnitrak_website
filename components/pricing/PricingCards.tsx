@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 type BillingCycle = "monthly" | "annual";
@@ -150,7 +153,7 @@ export default function PricingCards() {
       <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
 
         {/* Header bar above cards */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+        <SlideUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="flex flex-col gap-2 max-w-[720px]">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
               Select your pricing region
@@ -203,20 +206,21 @@ export default function PricingCards() {
               </button>
             </div>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Cards grid */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        <StaggerContainer staggerChildren={0.12} className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {PLANS.map((plan) => (
-            <PlanCard
-              key={plan.id}
-              plan={plan}
-              price={getPrice(plan)}
-              priceUnit={getPriceUnit(plan)}
-              isMounted={isMounted}
-            />
+            <StaggerItem key={plan.id}>
+              <PlanCard
+                plan={plan}
+                price={getPrice(plan)}
+                priceUnit={getPriceUnit(plan)}
+                isMounted={isMounted}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

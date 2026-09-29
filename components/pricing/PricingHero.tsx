@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { FadeIn } from "@/components/animations/FadeIn";
 
 export default function PricingHero() {
   return (
@@ -26,7 +30,7 @@ export default function PricingHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Left Column: Copy & CTAs (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <SlideUp className="lg:col-span-7 flex flex-col justify-center">
 
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#3FC3EE] font-inter">
               Pricing built around your operation
@@ -62,10 +66,10 @@ export default function PricingHero() {
             <p className="mt-6 text-[13px] leading-[20px] font-normal text-[#A0ABBA] font-inter max-w-[500px]">
               Clear plans. Site-based pricing. Implementation configured around your operation.
             </p>
-          </div>
+          </SlideUp>
 
           {/* Right Column: Plan Progression Card (4 cols) */}
-          <div className="lg:col-span-4 lg:col-start-9 w-full flex justify-end">
+          <FadeIn delay={0.2} className="lg:col-span-4 lg:col-start-9 w-full flex justify-end">
             <div className="w-full max-w-[420px] rounded-[16px] bg-[#16274D]/90 backdrop-blur-md border border-white/10 p-6 lg:p-8 shadow-2xl">
 
               <p className="text-[13px] leading-[16px] font-semibold text-[#3FC3EE] mb-6 font-inter">
@@ -121,7 +125,7 @@ export default function PricingHero() {
 
               </div>
             </div>
-          </div>
+          </FadeIn>
 
         </div>
       </div>

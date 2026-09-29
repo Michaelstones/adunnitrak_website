@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SlideUp } from "@/components/animations/SlideUp";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
 
 const cards = [
   {
@@ -44,7 +49,7 @@ export default function ConnectedPlatformSection() {
       <div className="max-w-[1366px] mx-auto px-4 md:px-8">
 
         {/* Header grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <SlideUp className="grid grid-cols-1 md:grid-cols-12 gap-4">
           <div className="md:col-span-8 flex flex-col justify-start">
             <p className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.06em] uppercase text-[#3FC3EE]">
               One connected operational ecosystem
@@ -56,53 +61,57 @@ export default function ConnectedPlatformSection() {
               Operations, maintenance, reliability, inventory and workforce administration are interconnected within AdunniTrak. A downtime incident can initiate maintenance action. Maintenance execution can support a reliability investigation. A confirmed failure can become reusable knowledge. The result is one continuous operational record rather than separate modules containing disconnected information.
             </p>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Cards bento */}
         <div className="pt-12">
           {/* Top row: 3 cards */}
-          <div className="flex flex-wrap lg:flex-nowrap gap-4 mb-4">
+          <StaggerContainer staggerChildren={0.1} className="flex flex-wrap lg:flex-nowrap gap-4 mb-4">
             {cards.slice(0, 3).map((card, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
-                className="flex-1 min-w-[280px] lg:max-w-[423px] min-h-[148px] bg-[#192F5D] border border-[rgba(236,237,238,0.15)] rounded-[14px] p-6 flex flex-col"
+                className="flex-1 min-w-[280px] lg:max-w-[423px]"
               >
-                <p className="font-sans font-semibold text-[11px] leading-[16px] tracking-[0.02em] text-[#3FC3EE] uppercase">
-                  {card.overline}
-                </p>
-                <p className="font-sans font-semibold text-[14px] leading-[20px] text-white pt-2">
-                  {card.title}
-                </p>
-                <p className="font-sans font-normal text-[13px] leading-[20px] text-[#8890A3] pt-2">
-                  {card.desc}
-                </p>
-              </div>
+                <div className="min-h-[148px] bg-[#192F5D] border border-[rgba(236,237,238,0.15)] rounded-[14px] p-6 flex flex-col hover:border-[#3FC3EE]/40 transition-colors h-full">
+                  <p className="font-sans font-semibold text-[11px] leading-[16px] tracking-[0.02em] text-[#3FC3EE] uppercase">
+                    {card.overline}
+                  </p>
+                  <p className="font-sans font-semibold text-[14px] leading-[20px] text-white pt-2">
+                    {card.title}
+                  </p>
+                  <p className="font-sans font-normal text-[13px] leading-[20px] text-[#8890A3] pt-2">
+                    {card.desc}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Bottom row: 2 cards */}
-          <div className="flex flex-wrap lg:flex-nowrap gap-4">
+          <StaggerContainer staggerChildren={0.1} delayChildren={0.2} className="flex flex-wrap lg:flex-nowrap gap-4">
             {cards.slice(3).map((card, idx) => (
-              <div
+              <StaggerItem
                 key={idx}
-                className="flex-1 min-w-[280px] lg:max-w-[643px] min-h-[128px] bg-[#192F5D] border border-[rgba(236,237,238,0.15)] rounded-[14px] p-6 flex flex-col"
+                className="flex-1 min-w-[280px] lg:max-w-[643px]"
               >
-                <p className="font-sans font-semibold text-[11px] leading-[16px] tracking-[0.02em] text-[#3FC3EE] uppercase">
-                  {card.overline}
-                </p>
-                <p className="font-sans font-semibold text-[14px] leading-[20px] text-white pt-2">
-                  {card.title}
-                </p>
-                <p className="font-sans font-normal text-[13px] leading-[20px] text-[#8890A3] pt-2">
-                  {card.desc}
-                </p>
-              </div>
+                <div className="min-h-[128px] bg-[#192F5D] border border-[rgba(236,237,238,0.15)] rounded-[14px] p-6 flex flex-col hover:border-[#3FC3EE]/40 transition-colors h-full">
+                  <p className="font-sans font-semibold text-[11px] leading-[16px] tracking-[0.02em] text-[#3FC3EE] uppercase">
+                    {card.overline}
+                  </p>
+                  <p className="font-sans font-semibold text-[14px] leading-[20px] text-white pt-2">
+                    {card.title}
+                  </p>
+                  <p className="font-sans font-normal text-[13px] leading-[20px] text-[#8890A3] pt-2">
+                    {card.desc}
+                  </p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
 
         {/* Link card */}
-        <div className="pt-4">
+        <SlideUp delay={0.2} className="pt-4">
           <div className="bg-[#192F5D] border border-[#ECEDEE] rounded-[14px] p-6 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3FC3EE" strokeWidth="1.5" className="shrink-0 mt-1 md:mt-0">
               <path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="m2 15 2-2v4l-2-2z" /><path d="M8 15h.01M12 15h.01M16 15h.01" />
@@ -119,21 +128,21 @@ export default function ConnectedPlatformSection() {
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </div>
-        </div>
+        </SlideUp>
 
         {/* Flow tags row */}
-        <div className="flex flex-wrap items-center pt-8 gap-3">
+        <StaggerContainer staggerChildren={0.06} className="flex flex-wrap items-center pt-8 gap-3">
           {flowTags.map((tag, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <div className="bg-[#192F5D] border border-[#ECEDEE] rounded-full py-2 px-4 font-sans font-semibold text-[13px] md:text-[14px] leading-[20px] text-white whitespace-nowrap">
+            <StaggerItem key={idx} className="flex items-center gap-3">
+              <div className="bg-[#192F5D] border border-[#ECEDEE] rounded-full py-2 px-4 font-sans font-semibold text-[13px] md:text-[14px] leading-[20px] text-white whitespace-nowrap hover:border-[#3FC3EE] transition-colors">
                 {tag}
               </div>
               {idx < flowTags.length - 1 && (
                 <ArrowRight size={16} color="#8890A3" className="shrink-0 hidden sm:block" />
               )}
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

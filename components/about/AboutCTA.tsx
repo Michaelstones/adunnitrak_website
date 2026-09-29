@@ -1,17 +1,13 @@
-/* ── AboutCTA — #3996:58745
-   #192F5D bg, py-24
-   Centred text block (862px max-width): overline + h2 + body + 2 CTAs
-   Text props from Figma component properties:
-     f.header = "Lets build a clearer view of your operation"
-     F.tag    = "Tell us about your facility, workflows and operational priorities."
-*/
+"use client";
+
 import Link from "next/link";
+import { SlideUp } from "@/components/animations/SlideUp";
 
 export default function AboutCTA() {
   return (
     <section className="w-full py-[96px] bg-[#192F5D]">
       <div className="w-full max-w-[1366px] mx-auto px-5 lg:px-[32px]">
-        <div className="flex flex-col items-center text-center max-w-[862px] mx-auto">
+        <SlideUp className="flex flex-col items-center text-center max-w-[862px] mx-auto">
           
           {/* Overline */}
           <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#17A9DB] font-inter">
@@ -20,7 +16,7 @@ export default function AboutCTA() {
 
           {/* H2 */}
           <h2 className="mt-[16px] font-inter font-extrabold text-[32px] md:text-[40px] leading-[1.15] tracking-[-0.02em] text-white">
-            Let's build a clearer view of your operation
+            Let&apos;s build a clearer view of your operation
           </h2>
 
           {/* Body */}
@@ -44,7 +40,7 @@ export default function AboutCTA() {
             </Link>
           </div>
           
-        </div>
+        </SlideUp>
       </div>
     </section>
   );

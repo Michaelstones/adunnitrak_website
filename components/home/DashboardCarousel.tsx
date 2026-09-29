@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { SlideUp } from "@/components/animations/SlideUp";
 
 const cards = [
   {
@@ -141,7 +142,7 @@ export default function DashboardCarousel() {
     >
       <div className="max-w-[1366px] mx-auto px-4 md:px-8">
         {/* Scroller container */}
-        <div className="flex flex-col gap-6 md:gap-8">
+        <SlideUp className="flex flex-col gap-6 md:gap-8">
           {/* Track */}
           <div
             ref={scrollRef}
@@ -219,7 +220,7 @@ export default function DashboardCarousel() {
               </svg>
             </button>
           </div>
-        </div>
+        </SlideUp>
       </div>
     </section>
   );
