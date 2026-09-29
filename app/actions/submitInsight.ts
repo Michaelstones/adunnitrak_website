@@ -2,11 +2,10 @@
 
 import { createClient } from "@sanity/client";
 
-// Ensure you have these in your .env.local file
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  token: process.env.SANITY_API_WRITE_TOKEN, // A token with write/editor permissions
+  token: process.env.SANITY_API_WRITE_TOKEN,
   useCdn: false,
   apiVersion: "2024-01-01",
 });
@@ -21,7 +20,7 @@ export async function submitInsightToSanity(formData: FormData) {
       // Upload the image buffer to Sanity Assets
       const arrayBuffer = await imageFile.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      
+
       const asset = await client.assets.upload("image", buffer, {
         filename: imageFile.name,
         contentType: imageFile.type,
