@@ -18,12 +18,12 @@ export default function DemoPage() {
     <main className="flex min-h-screen flex-col w-full overflow-hidden bg-white">
       <DemoHeroSection />
       <SlideUp><DemoBuiltAroundSection /></SlideUp>
-      <SlideUp><DemoAreasOfInterestSection /></SlideUp>
-      <SlideUp><DemoNotGenericAiSection /></SlideUp>
-      <SlideUp><DemoJourneySection /></SlideUp>
-      <SlideUp><DemoParticipantsSection /></SlideUp>
+      {/* <SlideUp><DemoNotGenericAiSection /></SlideUp> */}
       <SlideUp><DemoRequestFormSection /></SlideUp>
       <SlideUp><DemoFaqSection /></SlideUp>
+      <SlideUp><DemoAreasOfInterestSection /></SlideUp>
+      <SlideUp><DemoJourneySection /></SlideUp>
+      <SlideUp><DemoParticipantsSection /></SlideUp>
     </main>
   );
 }

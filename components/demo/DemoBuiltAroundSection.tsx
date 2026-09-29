@@ -29,7 +29,7 @@ export const DemoBuiltAroundSection = () => {
   ];
 
   return (
-    <section id="expectations" className="w-full py-16 lg:py-24 bg-white/60 ">
+    <section id="expectations" className="w-full py-16 lg:py-24 bg-[#DDDEE1] ">
       <div className=" w-full mx-auto px-5 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
         {/* Left Content */}

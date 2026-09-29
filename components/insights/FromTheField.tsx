@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import Link from 'next/link';
 import { SlideUp } from "@/components/animations/SlideUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
+import { Button } from '../ui/button';
+import { ArrowRight } from 'lucide-react';
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 interface FieldNote {
@@ -53,7 +55,7 @@ export function FromTheField() {
 
         {/* 4-Column Grid */}
         <StaggerContainer>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {FIELD_NOTES.map((note, index) => (
               <StaggerItem key={index}>
                 <article className="flex flex-col h-full p-6 bg-white border border-[#E2E6ED] rounded-[12px] hover:border-[#0F58F5]/30 hover:shadow-md transition-all cursor-pointer group">
@@ -68,6 +70,12 @@ export function FromTheField() {
             ))}
           </div>
         </StaggerContainer>
+        <Link href="/add-insight" className="inline-flex items-center justify-center gap-2 h-[52px] px-8 bg-[#3F79F7] border border-[#E2E6ED] hover:border-[#0B1220]/20 hover:text-[#0B1220] rounded-[8px] font-inter font-semibold text-[15px] text-white transition-colors shadow-sm w-full sm:w-auto">
+
+          Share New Insight
+          <ArrowRight />
+
+        </Link>
 
       </div>
     </section>

@@ -42,7 +42,7 @@ export function InsightsNewsletter() {
   return (
     <>
       {/* ─── Top Section: Newsletter Split ─── */}
-      <section className={`py-16 lg:py-24 'bg-[#EEF1F6] relative`}>
+      <section className={`py-16 lg:py-24 bg-[#E3E6EF] relative`}>
         <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <SlideUp>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
