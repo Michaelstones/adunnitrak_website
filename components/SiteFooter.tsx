@@ -124,15 +124,21 @@ export default function SiteFooter() {
                 London, Ontario, Canada
               </p>
               <p className="font-sans font-normal text-[13px] md:text-[14px] text-white/70">
+                AdunniTrak Solutions Nigeria Ltd.
+                <br />
+                2, Babatope Ajakaiye Crescent, Jahi, FCT Abuja, Nigeria
+              </p>
+              <p className="font-sans font-normal text-[13px] md:text-[14px] text-white/70">
                 +1 226 365 7308
                 <br />
                 +234 803 458 7309
               </p>
               <Link
-                href="mailto:agboola.shonekan@adunnitrak.com"
+                href="mailto:info@adunnitrak.com"
                 className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
               >
-                agboola.shonekan@adunnitrak.com
+                info@adunnitrak.com
+
               </Link>
               <Link
                 href="https://www.adunnitrak.com"
