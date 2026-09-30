@@ -7,26 +7,14 @@ import { SlideUp } from "@/components/animations/SlideUp";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
-import insightsData from "@/data/insights.json";
+import { Article } from "@/app/actions/getArticles";
 
-/* ─── Types ─────────────────────────────────────────────── */
-export interface Article {
-  id: string;
-  slug: string;
-  iconName: "FileText" | "Link2" | "Gauge" | "History";
-  category: string;
-  title: string;
-  description: string;
-  author: string;
-  date: string;
-}
 
 interface InsightsHubProps {
   initialTopics?: string[];
-  initialArticles?: Article[];
+  initialArticles: Article[];
 }
 
-/* ─── Default CMS Data Mapping ────────────────────── */
 const DEFAULT_TOPICS = [
   "All topics",
   "Operations",
@@ -40,34 +28,6 @@ const DEFAULT_TOPICS = [
   "Product updates",
 ];
 
-// Helper to determine icon based on category
-const getIconForCategory = (category: string): "FileText" | "Link2" | "Gauge" | "History" => {
-  const cat = category.toLowerCase();
-  if (cat.includes("transformation") || cat.includes("connected")) return "Link2";
-  if (cat.includes("operations") || cat.includes("control")) return "Gauge";
-  if (cat.includes("downtime") || cat.includes("history")) return "History";
-  return "FileText"; // Default fallback
-};
-
-// Map the detailed JSON structure to the flatter card structure
-const JSON_ARTICLES: Article[] = insightsData.articles.map((article) => {
-  // Extract the first paragraph block to use as the card description
-  const firstParagraph = article.blocks.find((b: any) => b.type === "paragraph")?.text || "";
-  const description = firstParagraph.length > 140 ? firstParagraph.substring(0, 140) + "..." : firstParagraph;
-
-  return {
-    id: article.slug,
-    slug: article.slug,
-    iconName: getIconForCategory(article.category),
-    category: article.category,
-    title: article.title,
-    description: description,
-    author: article.author.name,
-    date: article.publishedDate,
-  };
-});
-
-/* ─── Icon Map ───────────────────────────────────────────── */
 const IconMap = {
   FileText,
   Link2,
@@ -75,10 +35,9 @@ const IconMap = {
   History,
 };
 
-/* ─── Component ──────────────────────────────────────────── */
 export function LatestArticles({
   initialTopics = DEFAULT_TOPICS,
-  initialArticles = JSON_ARTICLES, // Using the dynamically mapped JSON data
+  initialArticles,
 }: InsightsHubProps) {
   const [activeTopic, setActiveTopic] = useState("All topics");
   const [searchQuery, setSearchQuery] = useState("");

@@ -1,82 +1,98 @@
-"use server";
-
+'use server'
 import { createClient } from "@sanity/client";
 
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  token: process.env.SANITY_API_WRITE_TOKEN,
-  useCdn: false,
-  apiVersion: "2024-01-01",
-});
+import { notifyViaWeb3Forms } from '@/app/actions/notifyViaWeb3Forms'
 
 export async function submitInsightToSanity(formData: FormData) {
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+  const token = process.env.SANITY_API_TOKEN;
+
+  if (!projectId || !dataset || !token) {
+    console.error("Sanity Configuration Error: Missing environment variables.");
+    return {
+      success: false,
+      notified: false,
+      message: "Server configuration error: Missing Sanity environment variables.",
+    };
+  }
+
+  const client = createClient({ projectId, dataset, apiVersion: "2024-03-01", token, useCdn: false });
+
   try {
-    let imageRef = null;
+    let imageAssetId: string | null = null;
+    let videoAssetId: string | null = null;
 
-    // 1. Handle Image Upload if a file was provided
-    const imageFile = formData.get("image") as File;
+    const imageFile = formData.get("image") as File | null;
     if (imageFile && imageFile.size > 0) {
-      // Upload the image buffer to Sanity Assets
-      const arrayBuffer = await imageFile.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-
+      const buffer = Buffer.from(await imageFile.arrayBuffer());
       const asset = await client.assets.upload("image", buffer, {
         filename: imageFile.name,
         contentType: imageFile.type,
       });
-      imageRef = asset._id;
+      imageAssetId = asset._id;
     }
 
-    // 2. Build the Sanity Document
-    const insightDoc = {
-      _type: "insightSubmission", // Make sure you have this schema created in Sanity
-      about: {
-        fullName: formData.get("fullName"),
-        workEmail: formData.get("workEmail"),
-        jobTitle: formData.get("jobTitle"),
-        organisation: formData.get("organisation"),
-        country: formData.get("country"),
-        linkedIn: formData.get("linkedIn"),
-      },
-      details: {
-        contentType: formData.get("contentType"),
-        title: formData.get("title"),
-        industry: formData.get("industry"),
-        summary: formData.get("summary"),
-        tags: formData.get("tags") ? (formData.get("tags") as string).split(",") : [],
-      },
-      content: {
-        fullText: formData.get("fullText"),
-        keyTakeaway: formData.get("keyTakeaway"),
-        sources: formData.get("sources"),
-      },
-      featuredImage: imageRef ? {
-        _type: "image",
-        asset: { _type: "reference", _ref: imageRef },
-        alt: formData.get("imageDescription"),
-        credit: formData.get("imageCredit"),
-      } : null,
-      publishing: {
-        preferredPeriod: formData.get("pubPeriod"),
-        contactMethod: formData.get("contactMethod"),
-        editorNote: formData.get("note"),
-      },
-      consents: {
-        isOriginal: formData.get("consentOriginal") === "on",
-        isNonConfidential: formData.get("consentNonConfidential") === "on",
-        agreesToPrivacy: formData.get("consentPrivacy") === "on",
-      },
-      submittedAt: new Date().toISOString(),
-      status: "pending", // Default status for editorial review
+    const videoFile = formData.get("video") as File | null;
+    if (videoFile && videoFile.size > 0) {
+      const buffer = Buffer.from(await videoFile.arrayBuffer());
+      const asset = await client.assets.upload("file", buffer, {
+        filename: videoFile.name,
+        contentType: videoFile.type,
+      });
+      videoAssetId = asset._id;
+    }
+
+    const fullName = String(formData.get("fullName") ?? "");
+    const workEmail = String(formData.get("workEmail") ?? "");
+    const organisation = String(formData.get("organisation") ?? "");
+    const title = String(formData.get("title") ?? "");
+    const contentType = String(formData.get("contentType") ?? "");
+    const summary = String(formData.get("summary") ?? "");
+
+    const submission = {
+      _type: "insightSubmission",
+      fullName,
+      workEmail,
+      company: organisation,
+      title,
+      contentType,
+      summary,
+      fullText: formData.get("fullText"),
+      status: "pending",
+      ...(imageAssetId && {
+        featuredImage: { _type: "image", asset: { _type: "reference", _ref: imageAssetId } },
+      }),
+      ...(videoAssetId && {
+        featuredVideo: { _type: "file", asset: { _type: "reference", _ref: videoAssetId } },
+      }),
     };
 
-    // 3. Create document in Sanity
-    await client.create(insightDoc);
+    await client.create(submission);
 
-    return { success: true, message: "Insight submitted successfully for review." };
+    // Sanity write succeeded — the submission is safe regardless of what happens next.
+    const notifyResult = await notifyViaWeb3Forms({
+      fullName,
+      workEmail,
+      organisation,
+      title,
+      contentType,
+      summary,
+    });
+
+    return {
+      success: true,
+      notified: notifyResult.ok,
+      message: notifyResult.ok
+        ? "Insight submitted successfully for editorial review!"
+        : "Your insight was submitted and saved, but the notification email couldn't be sent. It's still in the review queue.",
+    };
   } catch (error: any) {
     console.error("Sanity Submission Error:", error);
-    return { success: false, message: error.message || "Failed to submit insight." };
+    return {
+      success: false,
+      notified: false,
+      message: error.message || "An error occurred while uploading your insight.",
+    };
   }
 }

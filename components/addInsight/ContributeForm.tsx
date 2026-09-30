@@ -2,10 +2,14 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown, Image as ImageIcon } from "lucide-react";
+import { ChevronDown, Image as ImageIcon, Video as VideoIcon } from "lucide-react";
 import { toast } from "sonner";
 import { submitInsightToSanity } from "@/app/actions/submitInsight";
 import { SlideUp } from "@/components/animations/SlideUp";
+
+const inputClass =
+  "w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] px-4 py-3 text-[14px] text-[#0B1220] placeholder:text-[#A0ABBA] focus:bg-white focus:border-[#0F58F5] focus:ring-1 focus:ring-[#0F58F5] outline-none transition-all";
+
 
 export default function ContributeForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,9 +17,12 @@ export default function ContributeForm() {
   // Custom states for UI elements
   const [contentType, setContentType] = useState("Article");
   const [fileName, setFileName] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [videoFileName, setVideoFileName] = useState<string | null>(null);
 
-  // Fully controlled state for all text/select inputs
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
+
+  // Fully controlled state for all text/select inputs (Added 'industry' key here)
   const [formValues, setFormValues] = useState({
     fullName: "",
     workEmail: "",
@@ -24,7 +31,7 @@ export default function ContributeForm() {
     country: "",
     linkedIn: "",
     title: "",
-    industry: "",
+    industry: "", // Fixed: Added missing key
     summary: "",
     tags: "",
     fullText: "",
@@ -32,7 +39,7 @@ export default function ContributeForm() {
     sources: "",
     imageDescription: "",
     imageCredit: "",
-    pubPeriod: "",
+    pubPeriod: "No preference",
     contactMethod: "Email",
     note: "",
   });
@@ -65,11 +72,17 @@ export default function ContributeForm() {
     }
   };
 
+  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setVideoFileName(e.target.files[0].name);
+    }
+  };
+
   // Utility to calculate words for the Full Text field
   const wordCount = formValues.fullText.trim().split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  // Strict validation guard: Button remains disabled unless ALL asterisked fields AND checkboxes are filled
+  // Strict validation guard
   const isFormValid =
     formValues.fullName.trim() !== "" &&
     formValues.workEmail.trim() !== "" &&
@@ -78,6 +91,7 @@ export default function ContributeForm() {
     formValues.country !== "" &&
     formValues.title.trim() !== "" &&
     formValues.summary.trim() !== "" &&
+    formValues.industry !== "" && // Added industry to validation check
     formValues.fullText.trim() !== "" &&
     formValues.keyTakeaway.trim() !== "" &&
     formValues.imageDescription.trim() !== "" &&
@@ -89,14 +103,13 @@ export default function ContributeForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Final safety check before executing
     if (!isFormValid) {
       toast.error("Please fill all required fields and accept the policies.");
       return;
     }
 
     setIsSubmitting(true);
-    const toastId = toast.loading("Uploading your insight to the editors...");
+    const toastId = toast.loading("Uploading your insight and media...");
 
     try {
       const formData = new FormData(e.currentTarget);
@@ -106,15 +119,21 @@ export default function ContributeForm() {
 
       if (result.success) {
         toast.success("Insight submitted successfully! We will be in touch.", { id: toastId });
+        if (result.notified) {
+          toast.success(result.message, { id: toastId });
+        } else {
+          toast.warning(result.message, { id: toastId });
+        }
 
         // Reset everything on success
         (e.target as HTMLFormElement).reset();
         setFileName(null);
+        setVideoFileName(null);
         setContentType("Article");
         setFormValues({
           fullName: "", workEmail: "", jobTitle: "", organisation: "", country: "", linkedIn: "",
           title: "", industry: "", summary: "", tags: "", fullText: "", keyTakeaway: "", sources: "",
-          imageDescription: "", imageCredit: "", pubPeriod: "", contactMethod: "Email", note: "",
+          imageDescription: "", imageCredit: "", pubPeriod: "No preference", contactMethod: "Email", note: "",
         });
         setConsents({ original: false, nonConfidential: false, privacy: false });
       } else {
@@ -127,35 +146,7 @@ export default function ContributeForm() {
     }
   };
 
-  // Reusable Section Layout matching the design
-  const FormSection = ({ num, title, desc, children }: { num: string, title: string, desc?: string, children: React.ReactNode }) => (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-start gap-4">
-        <div className="w-8 h-8 rounded-full bg-[#0F58F5] text-white font-bold text-[14px] flex items-center justify-center shrink-0 mt-0.5">
-          {num}
-        </div>
-        <div>
-          <h2 className="text-[#0B1220] font-inter font-bold text-[20px] mb-1">{title}</h2>
-          {desc && <p className="text-[#5B6472] font-inter text-[14px] leading-[22px]">{desc}</p>}
-        </div>
-      </div>
-      <div className="lg:pl-12">
-        {children}
-      </div>
-    </div>
-  );
 
-  // Reusable Label Component
-  const Label = ({ text, required, optional, subtext }: { text: string, required?: boolean, optional?: boolean, subtext?: string }) => (
-    <div className="flex items-baseline justify-between mb-2">
-      <label className="text-[14px] font-bold text-[#0B1220]">
-        {text} {required && <span className="text-[#E02424]">*</span>} {subtext && <span className="text-[#5B6472] font-normal ml-1">{subtext}</span>}
-      </label>
-      {optional && <span className="text-[13px] text-[#5B6472]">Optional</span>}
-    </div>
-  );
-
-  const inputClass = "w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-[8px] px-4 py-3 text-[14px] text-[#0B1220] placeholder:text-[#A0ABBA] focus:bg-white focus:border-[#0F58F5] focus:ring-1 focus:ring-[#0F58F5] outline-none transition-all";
 
   return (
     <div className="lg:col-span-8 bg-white p-6 md:p-10 rounded-[16px] shadow-sm border border-[#E2E8F0]">
@@ -236,9 +227,9 @@ export default function ContributeForm() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
                 <div className="flex flex-col relative">
-                  <Label text="Industry" />
-                  <select name="industry" value={formValues.industry} onChange={handleChange} className={`${inputClass} appearance-none cursor-pointer`}>
-                    <option value="" disabled></option>
+                  <Label text="Industry" required />
+                  <select name="industry" required value={formValues.industry} onChange={handleChange} className={`${inputClass} appearance-none cursor-pointer`}>
+                    <option value="" disabled>Select industry</option>
                     <option value="manufacturing">Manufacturing</option>
                     <option value="energy">Energy & Power</option>
                     <option value="mining">Mining</option>
@@ -275,26 +266,38 @@ export default function ContributeForm() {
             </div>
           </FormSection>
 
-          {/* Section 4: Featured image */}
-          <FormSection num="4" title="Featured image" desc="Use an image you own or are licensed to use. Landscape, at least 1600 × 900 px, JPG or PNG up to 5 MB.">
+          {/* Section 4: Media Uploads */}
+          <FormSection num="4" title="Media uploads" desc="Upload featured images or field walkthrough videos for your submission.">
             <div className="flex flex-col gap-6">
 
-              {/* Upload Box matching the design */}
-              <div onClick={() => fileInputRef.current?.click()} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[12px] p-6 flex items-center gap-5 cursor-pointer hover:bg-[#F1F5F9] transition-all">
-                <div className="w-14 h-14 bg-[#EEF3FF] rounded-[10px] flex items-center justify-center shrink-0">
-                  <ImageIcon className="w-6 h-6 text-[#0F58F5]" strokeWidth={1.5} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Image Upload Box */}
+                <div onClick={() => fileInputRef.current?.click()} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[12px] p-5 flex items-center gap-4 cursor-pointer hover:bg-[#F1F5F9] transition-all">
+                  <div className="w-12 h-12 bg-[#EEF3FF] rounded-[10px] flex items-center justify-center shrink-0">
+                    <ImageIcon className="w-6 h-6 text-[#0F58F5]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col overflow-hidden">
+                    <span className="text-[13px] font-bold text-[#0B1220]">Featured Image</span>
+                    <span className="text-[12px] text-[#5B6472] truncate">
+                      {fileName ? fileName : "Click to select JPG or PNG"}
+                    </span>
+                  </div>
+                  <input type="file" name="image" ref={fileInputRef} onChange={handleFileChange} accept="image/jpeg, image/png, image/webp" className="hidden" />
                 </div>
-                <div className="flex flex-col">
-                  {fileName ? (
-                    <span className="text-[14px] font-bold text-[#0B1220]">{fileName}</span>
-                  ) : (
-                    <>
-                      <span className="text-[14px] font-bold text-[#0F58F5]">Click to upload <span className="text-[#5B6472] font-normal">or drag an image here</span></span>
-                      <span className="text-[13px] text-[#5B6472] mt-0.5">No file selected</span>
-                    </>
-                  )}
+
+                {/* Video Upload Box */}
+                <div onClick={() => videoInputRef.current?.click()} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[12px] p-5 flex items-center gap-4 cursor-pointer hover:bg-[#F1F5F9] transition-all">
+                  <div className="w-12 h-12 bg-[#EEF3FF] rounded-[10px] flex items-center justify-center shrink-0">
+                    <VideoIcon className="w-6 h-6 text-[#0F58F5]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col overflow-hidden">
+                    <span className="text-[13px] font-bold text-[#0B1220]">Walkthrough Video <span className="text-[#5B6472] font-normal">(Optional)</span></span>
+                    <span className="text-[12px] text-[#5B6472] truncate">
+                      {videoFileName ? videoFileName : "Click to select MP4 or MOV"}
+                    </span>
+                  </div>
+                  <input type="file" name="video" ref={videoInputRef} onChange={handleVideoChange} accept="video/mp4, video/quicktime" className="hidden" />
                 </div>
-                <input type="file" name="image" ref={fileInputRef} onChange={handleFileChange} accept="image/jpeg, image/png" className="hidden" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
@@ -382,4 +385,53 @@ export default function ContributeForm() {
       </SlideUp>
     </div>
   );
-};
+}
+
+function FormSection({
+  num,
+  title,
+  desc,
+  children,
+}: {
+  num: string;
+  title: string;
+  desc?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex items-start gap-4">
+        <div className="w-8 h-8 rounded-full bg-[#0F58F5] text-white font-bold text-[14px] flex items-center justify-center shrink-0 mt-0.5">
+          {num}
+        </div>
+        <div>
+          <h2 className="text-[#0B1220] font-inter font-bold text-[20px] mb-1">{title}</h2>
+          {desc && <p className="text-[#5B6472] font-inter text-[14px] leading-[22px]">{desc}</p>}
+        </div>
+      </div>
+      <div className="lg:pl-12">{children}</div>
+    </div>
+  );
+}
+
+function Label({
+  text,
+  required,
+  optional,
+  subtext,
+}: {
+  text: string;
+  required?: boolean;
+  optional?: boolean;
+  subtext?: string;
+}) {
+  return (
+    <div className="flex items-baseline justify-between mb-2">
+      <label className="text-[14px] font-bold text-[#0B1220]">
+        {text} {required && <span className="text-[#E02424]">*</span>}{" "}
+        {subtext && <span className="text-[#5B6472] font-normal ml-1">{subtext}</span>}
+      </label>
+      {optional && <span className="text-[13px] text-[#5B6472]">Optional</span>}
+    </div>
+  );
+}
