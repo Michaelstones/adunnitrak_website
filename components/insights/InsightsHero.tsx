@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { SlideUp } from "@/components/animations/SlideUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
 
@@ -11,6 +13,23 @@ export function InsightsHero() {
     "Created for plant teams, technical professionals and industrial leadership.",
     "Reviewed for clarity, relevance and responsible use.",
   ];
+
+  // Custom smooth scroll handler to offset the sticky header
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      const headerOffset = 80; // Adjust this if your sticky header height changes
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <section className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32 flex items-center min-h-[700px]">
@@ -71,12 +90,23 @@ export function InsightsHero() {
 
               <StaggerItem>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <button className="h-[48px] px-6 bg-[#0F58F5] hover:bg-[#093593] text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors flex items-center justify-center">
+                  {/* Updated Link with Smooth Scroll onClick */}
+                  <Link
+                    href="#all-topics"
+                    onClick={(e) => handleScroll(e, "all-topics")}
+                    className="h-[48px] px-6 bg-[#0F58F5] hover:bg-[#093593] text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors flex items-center justify-center"
+                  >
                     Explore latest insights
-                  </button>
-                  <button className="h-[48px] px-6 bg-transparent hover:bg-white/10 text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors border border-white/20 flex items-center justify-center">
+                  </Link>
+
+                  {/* Updated Link with Smooth Scroll onClick */}
+                  <Link
+                    href="#latest-articles"
+                    onClick={(e) => handleScroll(e, "latest-articles")}
+                    className="h-[48px] px-6 bg-transparent hover:bg-white/10 text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors border border-white/20 flex items-center justify-center"
+                  >
                     Browse topics
-                  </button>
+                  </Link>
                 </div>
               </StaggerItem>
             </StaggerContainer>

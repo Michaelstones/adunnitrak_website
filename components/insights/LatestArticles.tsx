@@ -97,7 +97,7 @@ export function LatestArticles({
   return (
     <>
       {/* ─── Topic Browser Section ─── */}
-      <section className="py-16 lg:py-24 bg-[#EEF1F6]">
+      <section id="latest-articles" className="py-16 lg:py-24 bg-[#EEF1F6]">
         <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
           <SlideUp>
             <div className="max-w-[720px] mb-12">
@@ -146,7 +146,7 @@ export function LatestArticles({
       </section>
 
       {/* ─── Filtered Articles Grid Section ─── */}
-      <section className="py-16 lg:py-24 bg-[#F9FAFB]">
+      <section id="all-topics" className="py-16 lg:py-24 bg-[#F9FAFB]">
         <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
           <SlideUp>
             <div className="mb-12 max-w-[800px]">
