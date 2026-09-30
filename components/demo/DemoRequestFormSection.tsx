@@ -32,7 +32,6 @@ export const DemoRequestFormSection = () => {
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Require specific fields according to the design (red asterisks)
   const isFormValid =
     formValues.fullName.trim() !== "" &&
     formValues.company.trim() !== "" &&
@@ -200,7 +199,7 @@ export const DemoRequestFormSection = () => {
               </div>
             </div>
 
-            {/* Areas of interest (Full Width TextArea rather than Select based on design) */}
+            {/* Areas of interest */}
             <div className="flex flex-col mb-6">
               <label className="text-[13px] leading-[20px] font-bold text-[#0B1220] mb-2">Areas of interest</label>
               <textarea name="areasOfInterest" value={formValues.areasOfInterest} onChange={handleChange} className="w-full min-h-[90px] p-4 rounded-[8px] border border-[#E2E6ED] bg-white text-[14px] text-[#0B1220] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#0F58F5] focus:ring-1 focus:ring-[#0F58F5] resize-y shadow-sm transition-all" />

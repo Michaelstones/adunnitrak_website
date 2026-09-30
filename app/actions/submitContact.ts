@@ -1,43 +1,46 @@
-"use server";
-
-import { google } from "googleapis";
-
 export async function submitContactForm(formData: FormData) {
     try {
-        const auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: process.env.GOOGLE_CLIENT_EMAIL,
-                private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+        if (!accessKey) {
+            return { success: false, message: "Web3Forms Access Key is missing in environment variables." };
+        }
+
+        // Prepare a clean payload. Web3Forms automatically formats these key-value pairs into a neat table.
+        const payload = {
+            access_key: accessKey,
+            subject: `New Contact Request: ${formData.get("company") || formData.get("fullName")}`,
+            from_name: "AdunniTrak Website",
+            replyto: formData.get("workEmail") as string,
+
+            // Clean fields for Web3Forms' built-in email formatter
+            "Full Name": formData.get("fullName") || "N/A",
+            "Company": formData.get("company") || "N/A",
+            "Work Email": formData.get("workEmail") || "N/A",
+            "Phone Number": formData.get("phone") || "N/A",
+            "Country": formData.get("country") || "N/A",
+            "Industry": formData.get("industry") || "N/A",
+            "Additional Notes": formData.get("notes") || "None provided",
+            "Consent Granted": formData.get("consent") === "on" ? "Yes" : "No",
+        };
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
             },
-            scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+            body: JSON.stringify(payload),
         });
 
-        const sheets = google.sheets({ version: "v4", auth });
+        const result = await response.json();
 
-        const values = [
-            [
-                new Date().toISOString(), // Timestamp
-                formData.get("fullName") || "",
-                formData.get("company") || "",
-                formData.get("workEmail") || "",
-                formData.get("phone") || "",
-                formData.get("country") || "",
-                formData.get("industry") || "",
-                formData.get("notes") || "",
-                formData.get("consent") === "on" ? "Yes" : "No",
-            ],
-        ];
-
-        await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.GOOGLE_SHEET_ID,
-            range: "Sheet1!A:I", // Adjust if your sheet tab is named differently
-            valueInputOption: "USER_ENTERED",
-            requestBody: { values },
-        });
-
-        return { success: true, message: "Thank you! Your requirements have been submitted." };
+        if (result.success) {
+            return { success: true, message: "Thank you! Your requirements have been submitted." };
+        } else {
+            return { success: false, message: result.message || "Something went wrong. Please try again." };
+        }
     } catch (error) {
-        console.error("Error submitting form to Google Sheets:", error);
-        return { success: false, message: "Something went wrong. Please try again." };
+        console.error("Error submitting contact form:", error);
+        return { success: false, message: "Network error. Please check your connection and try again." };
     }
 }

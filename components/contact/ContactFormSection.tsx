@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { ChevronDown, Flag, Phone, Mail } from "lucide-react";
 import { useState } from "react";
-import { submitContactForm } from "@/app/actions/submitContact"; // Adjust path if needed
+import { submitContactForm } from "@/app/actions/submitContact"; // Client-side handler path
 
 export const ContactFormSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasConsent, setHasConsent] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: "success" | "error" | null; message: string }>({ type: null, message: "" });
 
-  // 1. Track all input values in a single state object
   const [formValues, setFormValues] = useState({
     fullName: "",
     company: "",
@@ -21,13 +20,11 @@ export const ContactFormSection = () => {
     notes: "",
   });
 
-  // 2. Generic onChange handler for text, email, tel, and select inputs
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 3. Validation logic: Check if all required fields are filled (notes is excluded)
   const isFormValid =
     formValues.fullName.trim() !== "" &&
     formValues.company.trim() !== "" &&
@@ -47,7 +44,6 @@ export const ContactFormSection = () => {
 
     if (result.success) {
       setSubmitStatus({ type: "success", message: result.message });
-      // Reset the form state completely upon success
       setFormValues({
         fullName: "",
         company: "",

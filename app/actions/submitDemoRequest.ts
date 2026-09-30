@@ -1,50 +1,69 @@
-"use server";
-
-import { google } from "googleapis";
-
 export async function submitDemoRequest(formData: FormData) {
     try {
-        const auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: process.env.GOOGLE_CLIENT_EMAIL,
-                private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+        if (!accessKey) {
+            return { success: false, message: "Web3Forms Access Key is missing in environment variables." };
+        }
+
+        const fullName = formData.get("fullName") || "N/A";
+        const company = formData.get("company") || "N/A";
+        const workEmail = formData.get("workEmail") || "N/A";
+        const phone = formData.get("phone") || "N/A";
+        const jobTitle = formData.get("jobTitle") || "N/A";
+        const country = formData.get("country") || "N/A";
+        const facilityType = formData.get("facilityType") || "N/A";
+        const industry = formData.get("industry") || "N/A";
+        const areasOfInterest = formData.get("areasOfInterest") || "N/A";
+        const currentSystems = formData.get("currentSystems") || "N/A";
+        const mainChallenge = formData.get("mainChallenge") || "N/A";
+        const contactMethod = formData.get("contactMethod") || "N/A";
+        const timeframe = formData.get("timeframe") || "N/A";
+        const notes = formData.get("notes") || "None provided";
+        const consent = formData.get("consent") === "on" ? "Yes" : "No";
+
+        // Clean payload using Web3Forms' built-in formatting engine
+        const payload = {
+            access_key: accessKey,
+            subject: `New Demo Request: ${company}`,
+            from_name: "AdunniTrak Website",
+            replyto: workEmail as string,
+
+            "Full Name": fullName,
+            "Company": company,
+            "Work Email": workEmail,
+            "Phone Number": phone,
+            "Job Title": jobTitle,
+            "Country": country,
+            "Facility / Plant Type": facilityType,
+            "Industry": industry,
+            "Areas of Interest": areasOfInterest,
+            "Current Systems": currentSystems,
+            "Main Challenge": mainChallenge,
+            "Preferred Contact": contactMethod,
+            "Preferred Timeframe": timeframe,
+            "Additional Message": notes,
+            "Consent Granted": consent,
+        };
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
             },
-            scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+            body: JSON.stringify(payload),
         });
 
-        const sheets = google.sheets({ version: "v4", auth });
+        const result = await response.json();
 
-        const values = [
-            [
-                new Date().toISOString(), // Timestamp
-                formData.get("fullName") || "",
-                formData.get("company") || "",
-                formData.get("workEmail") || "",
-                formData.get("phone") || "",
-                formData.get("jobTitle") || "",
-                formData.get("country") || "",
-                formData.get("facilityType") || "",
-                formData.get("industry") || "",
-                formData.get("areasOfInterest") || "",
-                formData.get("currentSystems") || "",
-                formData.get("mainChallenge") || "",
-                formData.get("contactMethod") || "",
-                formData.get("timeframe") || "",
-                formData.get("notes") || "",
-                formData.get("consent") === "on" ? "Yes" : "No",
-            ],
-        ];
-
-        await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.GOOGLE_DEMO_SHEET_ID, // Add this new ID to your .env
-            range: "Sheet1!A:P",
-            valueInputOption: "USER_ENTERED",
-            requestBody: { values },
-        });
-
-        return { success: true, message: "Request received. We will contact you shortly." };
+        if (result.success) {
+            return { success: true, message: "Request received. We will contact you shortly." };
+        } else {
+            console.error("Web3Forms API Error:", result);
+            return { success: false, message: result.message || "Something went wrong. Please try again." };
+        }
     } catch (error) {
-        console.error("Error submitting form to Google Sheets:", error);
-        return { success: false, message: "Something went wrong. Please try again." };
+        console.error("Error submitting demo request:", error);
+        return { success: false, message: "Network error. Please check your connection and try again." };
     }
 }
