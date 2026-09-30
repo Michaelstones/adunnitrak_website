@@ -70,7 +70,7 @@ export function FromTheField() {
             ))}
           </div>
         </StaggerContainer>
-        <Link href="/add-insight" className="inline-flex items-center justify-center gap-2 h-[52px] px-8 bg-[#3F79F7] border border-[#E2E6ED] hover:border-[#0B1220]/20 hover:text-[#0B1220] rounded-[8px] font-inter font-semibold text-[15px] text-white transition-colors shadow-sm w-full sm:w-auto">
+        <Link href="/add-insights" className="inline-flex items-center justify-center gap-2 h-[52px] px-8 bg-[#3F79F7] border border-[#E2E6ED] hover:border-[#0B1220]/20 hover:text-[#0B1220] rounded-[8px] font-inter font-semibold text-[15px] text-white transition-colors shadow-sm w-full sm:w-auto">
 
           Share New Insight
           <ArrowRight />

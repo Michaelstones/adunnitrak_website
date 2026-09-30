@@ -11,7 +11,7 @@ import { StaggerItem } from "@/components/animations/StaggerItem";
 export default function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden bg-[#071A33] pt-24 pb-16 lg:pt-32 lg:pb-20 px-6 lg:px-[24px]">
-      
+
       {/* Background gradients */}
       <div className="pointer-events-none absolute left-[644px] top-[515px] w-[258px] h-[21px] bg-[#0B1220] rounded-full blur-[20px]" />
       <div className="pointer-events-none absolute left-[926px] top-[504px] w-[190px] h-[21px] bg-[#0B1220] rounded-full blur-[20px]" />
@@ -19,10 +19,10 @@ export default function HeroSection() {
 
       {/* Main container enforcing max-width and 24px padding */}
       <div className="relative z-10 mx-auto w-full max-w-[1302px]">
-        
+
         {/* Top Grid: Text and Devices */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Text Block (7 cols) */}
           <div className="lg:col-span-7 flex flex-col relative z-20">
             <SlideUp delay={0.1}>
@@ -30,25 +30,25 @@ export default function HeroSection() {
                 AI-Powered Industrial Operational Intelligence
               </p>
             </SlideUp>
-            
+
             <SlideUp delay={0.2}>
               <h1 className="font-inter font-extrabold text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] tracking-[-0.02em] text-white mb-6 max-w-[700px]">
                 One intelligent platform built around your operation
               </h1>
             </SlideUp>
-            
+
             <SlideUp delay={0.3}>
               <p className="font-inter font-medium text-[16px] md:text-[18px] leading-[28px] text-white mb-4">
                 Connect your plant floor to intelligent decision making.
               </p>
             </SlideUp>
-            
+
             <SlideUp delay={0.4}>
               <p className="font-inter font-normal text-[14px] md:text-[15px] leading-[24px] text-[#A0ABBA] max-w-[640px] mb-8">
                 AdunniTrak connects operations, maintenance, reliability, inventory and workforce activity in one intelligent platform. It is configured around your facility, workflows, equipment structure, responsibilities and operational terminology, giving teams a shared view of performance and the information required to act with confidence.
               </p>
             </SlideUp>
-            
+
             <SlideUp delay={0.5}>
               <div className="flex flex-wrap items-center gap-4">
                 <Link
@@ -69,33 +69,41 @@ export default function HeroSection() {
           </div>
 
           {/* Right Visuals Block (5 cols) */}
-          <FadeIn delay={0.3} className="lg:col-span-5 relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[600px] mt-8 lg:mt-0">
-            <Image
-              src="/images/hero-dashboard.png" 
-              alt="AdunniTrak Platform across devices"
-              quality={100}
-              width={700}
-              height={510}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain lg:object-right"
-              priority
-            />
+          <FadeIn delay={0.3} className="lg:col-span-5 relative w-full h-[350px] sm:h-[450px] lg:h-[650px] mt-8 lg:mt-0">
 
-            {/* Floating Badge 1: Issues */}
-            <SlideUp delay={0.5} yOffset={20} className="absolute top-[35%] left-0 lg:-left-12">
-              <div className="bg-white text-black px-4 py-2.5 rounded-[8px] flex items-center gap-2.5 shadow-xl -rotate-[8deg] hover:rotate-0 transition-transform cursor-default z-20">
+            {/* 
+              Breakout Wrapper: 
+              Allows the image to span up to 160% of the 5-column width and anchor to the right. 
+              This causes the object-contain to render the image massive and full like the design.
+            */}
+            <div className="absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 lg:right-[-5%] xl:right-[-10%] lg:translate-x-0 w-[110%] lg:w-[130%] xl:w-[150%] h-[120%] lg:h-[130%] z-10 pointer-events-none">
+              <Image
+                src="/images/hero-dashboard-test.png"
+                alt="AdunniTrak Platform across devices"
+                fill
+                quality={100}
+                className="object-contain object-center lg:object-right"
+                priority
+                sizes="(max-width: 700px) 100vw, 700px"
+              />
+            </div>
+
+            {/* Floating Badge 1: Issues (Pulled further left to match the larger image scaling) */}
+            <SlideUp delay={0.5} yOffset={20} className="absolute top-[25%] lg:top-[32%] left-[2%] lg:-left-20 z-20">
+              <div className="bg-white text-black px-4 py-2.5 rounded-[8px] flex items-center gap-2.5 shadow-xl -rotate-[8deg] hover:rotate-0 transition-transform cursor-default">
                 <TriangleAlert className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]/20" />
                 <span className="font-inter font-medium text-[13px]">3 Issues Today</span>
               </div>
             </SlideUp>
 
-            {/* Floating Badge 2: PMs Due */}
-            <SlideUp delay={0.6} yOffset={20} className="absolute top-[5%] right-[5%] lg:right-4">
-              <div className="bg-white text-black px-5 py-2.5 rounded-full flex items-center gap-2.5 shadow-xl rotate-[6deg] hover:rotate-0 transition-transform cursor-default z-20">
+            {/* Floating Badge 2: PMs Due (Adjusted right positioning) */}
+            <SlideUp delay={0.6} yOffset={20} className="absolute top-[15%] lg:top-[30%] right-[5%] lg:-right-4 z-20">
+              <div className="bg-white text-black px-5 py-2.5 rounded-full flex items-center gap-2.5 shadow-xl rotate-[6deg] hover:rotate-0 transition-transform cursor-default">
                 <CalendarIcon className="w-4 h-4 text-[#0F58F5]" />
                 <span className="font-inter font-medium text-[13px]">5 PMs Due This Week</span>
               </div>
             </SlideUp>
+
           </FadeIn>
         </div>
 

@@ -92,8 +92,7 @@ export function InsightsHero() {
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                   {/* Updated Link with Smooth Scroll onClick */}
                   <Link
-                    href="#all-topics"
-                    onClick={(e) => handleScroll(e, "all-topics")}
+                    href="/add-insights"
                     className="h-[48px] px-6 bg-[#0F58F5] hover:bg-[#093593] text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors flex items-center justify-center"
                   >
                     Explore latest insights
@@ -101,11 +100,11 @@ export function InsightsHero() {
 
                   {/* Updated Link with Smooth Scroll onClick */}
                   <Link
-                    href="#latest-articles"
-                    onClick={(e) => handleScroll(e, "latest-articles")}
+                    href="#operational-walkthrough"
+                    onClick={(e) => handleScroll(e, "operational-walkthrough")}
                     className="h-[48px] px-6 bg-transparent hover:bg-white/10 text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors border border-white/20 flex items-center justify-center"
                   >
-                    Browse topics
+                    View operational  walkthrough
                   </Link>
                 </div>
               </StaggerItem>

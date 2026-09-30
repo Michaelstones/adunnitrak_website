@@ -60,7 +60,7 @@ export function WatchAndLearn() {
 
   return (
     <>
-      <section className="py-16 lg:py-24 bg-[#EEF1F6]">
+      <section id="operational-walkthrough" className="py-16 lg:py-24 bg-[#EEF1F6]">
         <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
 
           {/* Header Block */}

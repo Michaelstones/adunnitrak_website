@@ -16,7 +16,7 @@ export const metadata = {
 export default function DemoPage() {
   return (
     <main className="flex min-h-screen flex-col w-full overflow-hidden bg-white">
-      <DemoHeroSection />
+      {/* <DemoHeroSection /> */}
       <SlideUp><DemoBuiltAroundSection /></SlideUp>
       {/* <SlideUp><DemoNotGenericAiSection /></SlideUp> */}
       <SlideUp><DemoRequestFormSection /></SlideUp>
