@@ -33,7 +33,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can connect production reporting, downtime events, maintenance requests and shift logs across the quarry and processing plant.",
     ctaText: "Explore for quarries",
-    ctaLink: "/book-demo?industry=quarries",
+    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -52,7 +52,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can provide a connected record of production, delays, maintenance response and shift communication across mining and processing areas.",
     ctaText: "Explore for mining",
-    ctaLink: "/book-demo?industry=mining",
+    ctaLink: "/demo",
     bgWhite: true
   },
   {
@@ -71,7 +71,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can connect production activity, downtime analysis, maintenance and reliability information across the facility.",
     ctaText: "Explore for cement",
-    ctaLink: "/book-demo?industry=cement",
+    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -90,7 +90,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can be configured around the departmental structure of an integrated site, standardising communication and performance visibility.",
     ctaText: "Explore for steel",
-    ctaLink: "/book-demo?industry=steel",
+    ctaLink: "/demo",
     bgWhite: true
   },
   {
@@ -109,7 +109,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "Terminology such as downtime, production and output can be replaced with availability, dispatch and generation to match the specific operating model.",
     ctaText: "Explore for power",
-    ctaLink: "/book-demo?industry=power",
+    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -128,7 +128,7 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "The platform can be configured around production lines and work centres to coordinate downtime, maintenance response and shift continuity.",
     ctaText: "Explore for manufacturing",
-    ctaLink: "/book-demo?industry=manufacturing",
+    ctaLink: "/demo",
     bgWhite: true
   }
 ];
