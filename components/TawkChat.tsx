@@ -1,10 +1,9 @@
 import Script from "next/script";
 
 export function TawkChat() {
-  // Replace YOUR_PROPERTY_ID and YOUR_WIDGET_ID with your actual Tawk.to IDs
-  // Usually found in your Tawk.to dashboard -> Administration -> Chat Widget
-  const PROPERTY_ID = "YOUR_PROPERTY_ID";
-  const WIDGET_ID = "default"; // "default" is usually fine unless you created a specific widget
+
+  const PROPERTY_ID = process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID;
+  const WIDGET_ID = process.env.WIDGET_ID;
 
   return (
     <Script

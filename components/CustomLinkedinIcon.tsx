@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export const CustomLinkedinIcon = ({ size = 24, className = "", ...props }) => {
   return (

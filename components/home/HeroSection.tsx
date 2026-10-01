@@ -78,7 +78,7 @@ export default function HeroSection() {
             */}
             <div className="absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 lg:right-[-5%] xl:right-[-10%] lg:translate-x-0 w-[110%] lg:w-[130%] xl:w-[150%] h-[120%] lg:h-[130%] z-10 pointer-events-none">
               <Image
-                src="/images/hero-dashboard-test.png"
+                src="/images/dashboard.svg"
                 alt="AdunniTrak Platform across devices"
                 fill
                 quality={100}
