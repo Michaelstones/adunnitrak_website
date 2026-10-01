@@ -2,7 +2,7 @@ import Script from "next/script";
 
 export function TawkChat() {
 
-  const PROPERTY_ID = process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID;
+  const PROPERTY_ID = process.env.TAWK_PROPERTY_ID;
   const WIDGET_ID = process.env.WIDGET_ID;
 
   return (
