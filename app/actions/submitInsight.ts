@@ -1,7 +1,7 @@
-'use server'
-import { createClient } from "@sanity/client";
+"use server";
 
-import { notifyViaWeb3Forms } from '@/app/actions/notifyViaWeb3Forms'
+import { createClient } from "@sanity/client";
+import { notifyViaWeb3Forms } from '@/app/actions/notifyViaWeb3Forms';
 
 export async function submitInsightToSanity(formData: FormData) {
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -17,12 +17,19 @@ export async function submitInsightToSanity(formData: FormData) {
     };
   }
 
-  const client = createClient({ projectId, dataset, apiVersion: "2024-03-01", token, useCdn: false });
+  const client = createClient({
+    projectId,
+    dataset,
+    apiVersion: "2024-03-01",
+    token,
+    useCdn: false
+  });
 
   try {
     let imageAssetId: string | null = null;
     let videoAssetId: string | null = null;
 
+    // 1. Process Image Upload
     const imageFile = formData.get("image") as File | null;
     if (imageFile && imageFile.size > 0) {
       const buffer = Buffer.from(await imageFile.arrayBuffer());
@@ -33,6 +40,7 @@ export async function submitInsightToSanity(formData: FormData) {
       imageAssetId = asset._id;
     }
 
+    // 2. Process Video Upload
     const videoFile = formData.get("video") as File | null;
     if (videoFile && videoFile.size > 0) {
       const buffer = Buffer.from(await videoFile.arrayBuffer());
@@ -43,6 +51,7 @@ export async function submitInsightToSanity(formData: FormData) {
       videoAssetId = asset._id;
     }
 
+    // Extract core fields for notifications
     const fullName = String(formData.get("fullName") ?? "");
     const workEmail = String(formData.get("workEmail") ?? "");
     const organisation = String(formData.get("organisation") ?? "");
@@ -50,16 +59,34 @@ export async function submitInsightToSanity(formData: FormData) {
     const contentType = String(formData.get("contentType") ?? "");
     const summary = String(formData.get("summary") ?? "");
 
+    // 3. Create the Submission Object (Expanded to catch all frontend data)
     const submission = {
       _type: "insightSubmission",
+      status: "pending",
+      // Core Fields
       fullName,
       workEmail,
       company: organisation,
       title,
       contentType,
       summary,
-      fullText: formData.get("fullText"),
-      status: "pending",
+      fullText: String(formData.get("fullText") ?? ""),
+
+      // Extended Form Fields from ContributeForm
+      jobTitle: String(formData.get("jobTitle") ?? ""),
+      country: String(formData.get("country") ?? ""),
+      linkedIn: String(formData.get("linkedIn") ?? ""),
+      industry: String(formData.get("industry") ?? ""),
+      tags: String(formData.get("tags") ?? ""),
+      keyTakeaway: String(formData.get("keyTakeaway") ?? ""),
+      sources: String(formData.get("sources") ?? ""),
+      imageDescription: String(formData.get("imageDescription") ?? ""),
+      imageCredit: String(formData.get("imageCredit") ?? ""),
+      pubPeriod: String(formData.get("pubPeriod") ?? ""),
+      contactMethod: String(formData.get("contactMethod") ?? ""),
+      editorNote: String(formData.get("note") ?? ""),
+
+      // Media Attachments
       ...(imageAssetId && {
         featuredImage: { _type: "image", asset: { _type: "reference", _ref: imageAssetId } },
       }),
@@ -68,6 +95,7 @@ export async function submitInsightToSanity(formData: FormData) {
       }),
     };
 
+    // Save to Sanity
     await client.create(submission);
 
     // Sanity write succeeded — the submission is safe regardless of what happens next.
