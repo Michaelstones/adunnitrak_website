@@ -59,7 +59,7 @@ export const SolutionsAdunniAiSection = () => {
           {/* 1. Image Container with Aspect Ratio */}
           <div className="relative w-full aspect-video sm:aspect-[4/3] ">
             <Image
-              src="/images/solutions/adunni_ai_mockup.png"
+              src="/images/aiImage.svg"
               alt="Adunni AI Mockup"
               fill
               className="object-cover object-bottom hover:scale-110 transition duration-500 ease-in-out"

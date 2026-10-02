@@ -102,10 +102,10 @@ export default function AboutOffices() {
               <span className="text-[12px] text-[#5B6472] mb-1 font-inter">Contact</span>
               <div className="flex flex-col gap-1 mt-1">
                 <Link
-                  href="mailto:agboola.shonekan@adunnitrak.com"
+                  href="mailto:info@adunnitrak.com"
                   className="text-[14px] font-medium text-[#0F58F5] hover:text-[#093593] hover:underline transition-colors font-inter"
                 >
-                  agboola.shonekan@adunnitrak.com
+                  info@adunnitrak.com
                 </Link>
                 <Link
                   href="https://www.adunnitrak.com"

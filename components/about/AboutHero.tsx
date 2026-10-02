@@ -89,23 +89,15 @@ export default function AboutHero() {
         </div>
 
         {/* Right Asset (Image Box) - Anchored flush to the bottom, allowed to bleed downward */}
-        <FadeIn className="w-full relative lg:absolute lg:-bottom-[20px] lg:right-5 xl:right-0 lg:w-[45%] h-[400px] sm:h-[500px] lg:h-[95%] mt-8 lg:mt-0 flex items-end justify-center lg:justify-end z-10 pointer-events-none" delay={0.4}>
+        <FadeIn className="w-full relative lg:absolute lg:-bottom-[0px] lg:right-5 xl:right-0 lg:w-[45%] h-[400px] sm:h-[500px] lg:h-[95%] mt-8 lg:mt-0 flex items-end justify-center lg:justify-end z-10 pointer-events-none" delay={0.4}>
           <div className="relative w-full max-w-[600px] h-full pointer-events-auto">
             <Image
-              src="/images/about-hero-portrait-6a1753.png"
+              src="/images/abouthero.svg"
               alt="AdunniTrak team portrait"
               fill
               className="object-cover lg:object-contain object-bottom lg:object-right-bottom rounded-t-xl lg:rounded-none"
               priority
               quality={100}
-            />
-            {/* Subtle fade left edge into gradient (Restored to blend smoothly) */}
-            <div
-              className="absolute inset-0 hidden lg:block pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(3,18,49,1) 0%, rgba(3,18,49,0) 15%, rgba(0,0,0,0) 100%)",
-              }}
             />
           </div>
         </FadeIn>

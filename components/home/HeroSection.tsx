@@ -78,7 +78,7 @@ export default function HeroSection() {
             {/* Image stays inside its column so both sides carry equal weight */}
             <div className="absolute inset-0 z-10 pointer-events-none">
               <Image
-                src="/images/dashboard.svg"
+                src="/images/herodashboard.svg"
                 alt="AdunniTrak Platform across devices"
                 fill
                 quality={100}

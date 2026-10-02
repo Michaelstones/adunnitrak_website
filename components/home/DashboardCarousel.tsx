@@ -6,55 +6,55 @@ import { SlideUp } from "@/components/animations/SlideUp";
 
 const cards = [
   {
-    image: "/images/scroll1.png",
+    image: "/images/carousel1.svg",
     label: "01 · Dashboard Command Centre",
     title: "Plant-wide operational view",
     desc: "See plant status, production, downtime, maintenance workload, reliability indicators and priorities.",
   },
   {
-    image: "/images/scroll2.png",
+    image: "/images/carousel2.svg",
     label: "02 · Daily Shift Details and Production Plan",
     title: "Shift activity, targets and feed plan",
     desc: "Capture shift performance, production, workforce activity, targets and feed requirements.",
   },
   {
-    image: "/images/scroll3.png",
+    image: "/images/carousel3.svg",
     label: "03 · Downtime Incident Response.",
     title: "Detection, acknowledgement and timeline",
     desc: "Record each event and follow the response timeline through acknowledgement and escalation",
   },
   {
-    image: "/images/scroll4.png",
+    image: "/images/carousel4.svg",
     label: "04 · Maintenance Execution P1 to P4",
     title: "Safe priority-based repair workflow",
     desc: "Manage emergency, urgent, deferred and planned work with ownership and gated safety execution.",
   },
   {
-    image: "/images/scroll5.png",
+    image: "/images/carousel5.svg",
     label: "05 · Preventive Maintenance Schedule and Execution",
     title: "PM planning and completion",
     desc: "Plan recurring tasks, assign responsibilities, record completion evidence and monitor compliance.",
   },
   {
-    image: "/images/scroll6.png",
+    image: "/images/carousel6.svg",
     label: "06 · Reliability Performance and FMEA",
     title: "Performance, reliability & investigarion",
     desc: "Measure reliability, investigate causes, identify repeats and preserve confirmed learning.",
   },
   {
-    image: "/images/scroll7.png",
+    image: "/images/carousel7.svg",
     label: "07 · Inventory and Stores",
     title: "Parts, locations, movement and reorder",
     desc: "Maintain parts, locations, receipts, issues, balances and reorder visibility.",
   },
   {
-    image: "/images/scroll8.png",
+    image: "/images/carousel8.svg",
     label: "08 · Shift Attendance",
     title: "Biometric workforce visibility",
     desc: "Use API-capable biometric devices for current shift and workforce visibility.",
   },
   {
-    image: "/images/scroll9.png",
+    image: "/images/carousel9.svg",
     label: "09 · Ask Adunni",
     title: "Plant-specific AI insight and reporting",
     desc: "Ask questions, retrieve knowledge, identify similar failures and generate summaries.",
@@ -187,9 +187,8 @@ export default function DashboardCarousel() {
             <button
               onClick={scrollLeft}
               disabled={activeIndex === 0}
-              className={`flex items-center justify-center w-10 h-10 rounded-lg transition-opacity border-none ${
-                activeIndex === 0 ? "bg-[#525A72] opacity-50 cursor-not-allowed" : "bg-[#D4D4D4] cursor-pointer"
-              }`}
+              className={`flex items-center justify-center w-10 h-10 rounded-lg transition-opacity border-none ${activeIndex === 0 ? "bg-[#525A72] opacity-50 cursor-not-allowed" : "bg-[#D4D4D4] cursor-pointer"
+                }`}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={activeIndex === 0 ? "#FFFFFF" : "#000000"} strokeWidth="2" className="rotate-180">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -202,9 +201,8 @@ export default function DashboardCarousel() {
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
-                  className={`h-2 rounded-full p-0 border-none cursor-pointer transition-all duration-300 ease-in-out ${
-                    activeIndex === idx ? "w-6 bg-[#0C46C4]" : "w-2 bg-[#D4D4D4]"
-                  }`}
+                  className={`h-2 rounded-full p-0 border-none cursor-pointer transition-all duration-300 ease-in-out ${activeIndex === idx ? "w-6 bg-[#0C46C4]" : "w-2 bg-[#D4D4D4]"
+                    }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}

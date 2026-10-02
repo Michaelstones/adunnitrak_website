@@ -32,24 +32,24 @@ export const SolutionsHeroSection = () => {
 
           <ul className="flex flex-col gap-3 mb-10">
             <li className="flex items-start gap-3">
-              <div 
-  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
-  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
-/>
+              <div
+                className="w-[6px] h-[6px] rounded-full shrink-0 mt-2"
+                style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+              />
               <span className="t-body-lg text-white/90">Configured around your operation, not a generic one-size-fits-all system.</span>
             </li>
             <li className="flex items-start gap-3">
-                     <div 
-  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
-  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
-/>
+              <div
+                className="w-[6px] h-[6px] rounded-full shrink-0 mt-2"
+                style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+              />
               <span className="t-body-lg text-white/90">Connected across operational functions, not a collection of isolated tools.</span>
             </li>
             <li className="flex items-start gap-3">
-                       <div 
-  className="w-[6px] h-[6px] rounded-full shrink-0 mt-2" 
-  style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
-/>
+              <div
+                className="w-[6px] h-[6px] rounded-full shrink-0 mt-2"
+                style={{ background: "var(--Design-Colours-text-primary-w-text-teal-3, #3FC3EE)" }}
+              />
               <span className="t-body-lg text-white/90">Supported by Adunni AI, grounded in your approved operational context.</span>
             </li>
           </ul>
@@ -70,7 +70,7 @@ export const SolutionsHeroSection = () => {
         <FadeIn delay={0.3} className="w-full relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] flex items-center justify-center lg:justify-end">
           <div className="relative w-full max-w-[600px] h-full">
             <Image
-              src="/images/solutions/hero_image.png"
+              src="/images/solutionshero.svg"
               alt="AdunniTrak Solutions Hero Image"
               fill
               className="object-contain lg:object-right"

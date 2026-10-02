@@ -58,7 +58,7 @@ export default function PlatformHeroSection() {
           <FadeIn delay={0.3} className="w-full relative h-[300px] sm:h-[400px] lg:h-[480px] xl:h-[449px] z-10 flex justify-center xl:justify-end">
             <div className="relative w-full max-w-[639px] h-full">
               <Image
-                src="/images/mockup-platform-hero-1fb634.png"
+                src="/images/platformhero.svg"
                 alt="AdunniTrak Platform Interface Mockup"
                 fill
                 className="object-contain xl:object-right"

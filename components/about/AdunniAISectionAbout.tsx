@@ -41,7 +41,7 @@ export default function AdunniAISectionAbout() {
                         {/* Image: 633.63×475.22 */}
                         <div className="w-full max-w-[634px] aspect-[4/3] shrink-0 overflow-hidden ">
                             <Image
-                                src="/images/adunni-ai-chat.png"
+                                src="/images/aiImage.svg"
                                 alt="Adunni AI interface"
                                 width={1268}
                                 height={951}

@@ -44,7 +44,7 @@ export default function AdunniAISection() {
                 Because Adunni AI works within the connected platform, it can support questions and decisions using relevant operational context rather than providing generic responses disconnected from the facility.
               </p>
             </SlideUp>
-            
+
             <StaggerContainer staggerChildren={0.06} delayChildren={0.3} className="pt-8 flex flex-col gap-3">
               {features.map((feature, idx) => (
                 <StaggerItem key={idx} className="flex items-start md:items-center gap-3">
@@ -71,7 +71,7 @@ export default function AdunniAISection() {
             {/* Image: 633.63×475.22 */}
             <div className="w-full max-w-[634px] aspect-[4/3] shrink-0 overflow-hidden rounded-lg shadow-sm">
               <Image
-                src="/images/adunni-ai-chat.png"
+                src="/images/aiImage.svg"
                 alt="Adunni AI interface"
                 width={1268}
                 height={951}
