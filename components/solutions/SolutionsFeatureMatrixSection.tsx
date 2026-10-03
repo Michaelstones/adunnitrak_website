@@ -8,7 +8,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak structures production plans, shift activity and output targets in one place.",
       modules: "Operations Command Centre · Daily Shift Details · Production Targets",
       outcome: "Helps supervisors and operational teams understand current status instantly.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser1.svg",
     },
     {
       title: "Downtime response and incident control",
@@ -16,7 +16,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak records the incident timeline, operational impact and root cause.",
       modules: "Downtime Log · Incident Response Timeline · Maintenance Alerts",
       outcome: "Supports faster coordination, clearer response-time metrics and traceable root causes.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser2.svg",
     },
     {
       title: "Maintenance planning and execution",
@@ -24,7 +24,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak routes work by priority, supports work instructions and tracks completion.",
       modules: "Emergency P1 · Urgent P2 · Deferred P3/P4 · Work Orders",
       outcome: "Strengthens maintenance ownership, execution visibility and compliance.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser3.svg",
     },
     {
       title: "Reliability improvement and failure prevention",
@@ -32,7 +32,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak connects downtime incidents with reliability analysis and action plans.",
       modules: "Reliability Performance · Asset Reliability Analytics · FMEA",
       outcome: "Helps teams move from repeated reaction toward evidence-based prevention.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser4.svg",
     },
     {
       title: "Shift continuity and workforce accountability",
@@ -40,7 +40,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak structures shift logs, handover records and team communications.",
       modules: "Daily Shift Details · Shift Handover Log · Team Messages",
       outcome: "Improves continuity, visibility and accountability across different operating teams.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser5.svg",
     },
     {
       title: "Inventory and maintenance material coordination",
@@ -48,7 +48,7 @@ export const SolutionsFeatureMatrixSection = () => {
       response: "AdunniTrak provides structured item, location, and utilization records.",
       modules: "Inventory Database · Store Location · Stock Ledger",
       outcome: "Supports clearer parts visibility, traceability and maintenance readiness.",
-      image: "/images/solutioncard.svg",
+      image: "/images/browser6.svg",
     }
   ];
 

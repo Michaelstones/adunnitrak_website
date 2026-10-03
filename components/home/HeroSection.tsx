@@ -33,10 +33,10 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 md:px-8">
 
         {/* Top Grid: Text (left) and Devices (right) */}
-        <div className="grid grid-cols-1 xl:grid-cols-[0.95fr_1.05fr] gap-12 xl:gap-6 items-center w-full">
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-12 xl:gap-8 items-center w-full">
 
           {/* Left Text Block */}
-          <div className="flex flex-col w-full xl:max-w-[600px] relative z-20">
+          <div className="flex flex-col w-full xl:max-w-[560px] relative z-20">
             <SlideUp delay={0.1}>
               <p className="font-inter font-bold text-[12px] leading-[16px] tracking-[0.06em] uppercase text-[#3FC3EE] mb-4">
                 AI-Powered Industrial Operational Intelligence
@@ -44,7 +44,7 @@ export default function HeroSection() {
             </SlideUp>
 
             <SlideUp delay={0.2}>
-              <h1 className="font-inter font-extrabold text-[36px] md:text-[48px] xl:text-[46px] 2xl:text-[52px] leading-[1.1] tracking-[-0.02em] text-white mb-6">
+              <h1 className="font-inter font-extrabold text-[36px] md:text-[48px] xl:text-[42px] 2xl:text-[52px] leading-[1.1] tracking-[-0.02em] text-white mb-6">
                 One intelligent platform built around your operation
               </h1>
             </SlideUp>
@@ -83,14 +83,14 @@ export default function HeroSection() {
           {/* Right Visuals Block */}
           <FadeIn
             delay={0.3}
-            className="relative z-10 w-full flex justify-center xl:justify-end xl:-mr-8"
+            className="relative z-10 w-full flex justify-center xl:justify-end"
           >
             {/*
-              The box has a fixed aspect ratio, so the image and the badges
-              scale together and the badges always sit on the same spot of the artwork.
-              If the SVG's real ratio differs, change aspect-[16/9] only.
+              The wrapper hugs the image (w-full + h-auto), so the artwork always
+              fills the whole column at its natural ratio, and the badges are
+              positioned against the artwork itself.
             */}
-            <div className="relative w-full max-w-[600px] sm:max-w-[720px] xl:max-w-[860px] aspect-[16/9]">
+            <div className="relative w-full max-w-[640px] sm:max-w-[760px] xl:max-w-none">
 
               {/* Soft glows under the devices */}
               <div className="pointer-events-none absolute left-[20%] bottom-[4%] w-[40%] h-[21px] bg-[#0B1220] rounded-full blur-[20px]" />
@@ -99,18 +99,19 @@ export default function HeroSection() {
               <Image
                 src="/images/herodashboard.svg"
                 alt="AdunniTrak Platform across devices"
-                fill
+                width={1400}
+                height={900}
                 quality={100}
-                className="object-contain object-center xl:object-right"
                 priority
-                sizes="(max-width: 1280px) 100vw, 860px"
+                sizes="(max-width: 1280px) 100vw, 700px"
+                className="relative z-10 w-full h-auto"
               />
 
               {/* Floating Badge 1: Issues (left edge, over the tablet's top corner) */}
               <SlideUp
                 delay={0.5}
                 yOffset={20}
-                className="absolute top-[38%] left-[2%] sm:left-[4%] z-20"
+                className="absolute top-[36%] left-[2%] sm:left-[3%] z-20"
               >
                 <div className="bg-white text-black px-3 sm:px-4 py-2 sm:py-2.5 rounded-[8px] flex items-center gap-2 sm:gap-2.5 shadow-xl -rotate-[8deg] hover:rotate-0 transition-transform cursor-default">
                   <TriangleAlert className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]/20" />
@@ -120,11 +121,11 @@ export default function HeroSection() {
                 </div>
               </SlideUp>
 
-              {/* Floating Badge 2: PMs Due (top right, above the monitor) */}
+              {/* Floating Badge 2: PMs Due (top right, just above the monitor) */}
               <SlideUp
                 delay={0.6}
                 yOffset={20}
-                className="absolute top-[2%] right-[4%] sm:right-[8%] z-20"
+                className="absolute -top-[3%] sm:-top-[6%] right-[2%] z-20"
               >
                 <div className="bg-white text-black px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-2 sm:gap-2.5 shadow-xl rotate-[8deg] hover:rotate-0 transition-transform cursor-default">
                   <CalendarIcon className="w-4 h-4 text-[#0F58F5]" />
