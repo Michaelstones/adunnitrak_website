@@ -16,7 +16,7 @@ const LEADERS: LeaderCard[] = [
     id: "leader-1",
     name: "Agboola Adio Shonekan, C.Tech.",
     title: "Founder & Chief Executive Officer",
-    imageSrc: "/images/leader1.png",
+    imageSrc: "/images/agboola.jpeg",
     responsibility: "Company vision, product strategy, client engagement and industrial digital transformation.",
     bio: "Agboola founded AdunniTrak after observing how disconnected records, operational workflows and knowledge dependency affected information continuity within plant operations. His background in civil engineering, industrial operations and project leadership informs the platform's practical direction."
   },
@@ -24,7 +24,7 @@ const LEADERS: LeaderCard[] = [
     id: "leader-2",
     name: "Eyitayo Fajinmi",
     title: "Director of Industry Strategy",
-    imageSrc: "/images/leader2.png",
+    imageSrc: "/images/akin.jpeg",
     responsibility: "Industrial workflows, reliability strategy and operational implementation.",
     bio: "Eyitayo brings more than 18 years of experience across production, commissioning, maintenance, reliability, asset integrity and operational excellence. He guides AdunniTrak's industrial strategy and helps translate plant requirements into practical workflows."
   },
@@ -32,7 +32,7 @@ const LEADERS: LeaderCard[] = [
     id: "leader-3",
     name: "Isaac Adejuwon",
     title: "Chief Technology Officer",
-    imageSrc: "/images/leader3.png",
+    imageSrc: "/images/isaac.jpeg",
     responsibility: "Technology strategy, cybersecurity, cloud infrastructure and enterprise architecture.",
     bio: "Isaac leads the technology and security direction required to support reliable industrial deployment, including platform architecture, information security, cloud infrastructure and Operational Technology considerations."
   },

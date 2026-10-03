@@ -11,19 +11,19 @@ const leaders = [
     name: "Agboola Adio Shonekan, C.Tech.",
     role: "Founder & Chief Executive Officer",
     bio: "Leads vision, product strategy and digital transformation, combining engineering, industrial operations and project management expertise.",
-    image: "/images/leader1.png",
+    image: "/images/agboola.jpeg",
   },
   {
     name: "Eyitayo Fajinmi",
     role: "Director of Industry Strategy",
     bio: "Oversees system architecture, security and technical operations, ensuring enterprise reliability and scalability.",
-    image: "/images/leader2.png",
+    image: "/images/akin.jpeg",
   },
   {
     name: "Isaac Adejuwo",
     role: "Chief Technology Officer",
     bio: "Drives the development of Adunni AI, focusing on practical industrial intelligence and operational insights.",
-    image: "/images/leader3.png",
+    image: "/images/isaac.jpeg",
   },
   {
     name: "Michael Oluwasegun Agbaje",
