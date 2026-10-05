@@ -20,7 +20,7 @@ const VIDEOS: VideoData[] = [
     category: "Operational discussion",
     title: "Why operational information becomes disconnected",
     duration: "Duration to be confirmed",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // Dummy video
+    videoUrl: "https://videotourl.com/videos/1791212456716-28898b34-20e1-4962-9fb2-b49ab5d804a4.mp4", // Dummy video
   },
   {
     category: "Adunni AI",
