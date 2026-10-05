@@ -22,7 +22,7 @@ export default async function InsightsPage() {
   return (
     <main className="min-h-screen bg-[#0a0f1c]">
       <InsightsHero />
-      <FeaturedInsight />
+      <FeaturedInsight article={articles[0]} />
       <LatestArticles initialArticles={articles} />
       <WatchAndLearn />
       <FromTheField />

@@ -1,6 +1,4 @@
-import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export const SolutionsCtaSection = () => {
   return (
@@ -20,7 +18,6 @@ export const SolutionsCtaSection = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <Link href="/book-demo" className="btn-primary w-full sm:w-auto group">
             Book a live demo
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
           <button className="btn-outline-dark w-full sm:w-auto">
             Contact our team

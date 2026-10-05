@@ -36,12 +36,14 @@ export const IndustriesHeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Link href="#industries" className="inline-flex items-center justify-center h-[51px] px-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-[10px] text-white font-bold text-[14px] transition-colors">
+            <Link href="#industries" className="inline-flex items-center justify-center h-[51px] px-8 bg-[#1656E8] hover:bg-[#0F45C4] rounded-[10px] text-white font-bold text-[14px] transition-colors">
               Explore industries
+
             </Link>
-            <Link href="/demo" className="inline-flex items-center justify-center h-[51px] px-8 bg-[#1656E8] hover:bg-[#0F45C4] rounded-[10px] text-white font-bold text-[14px] transition-colors">
+            <Link href="/demo" className="inline-flex items-center justify-center h-[51px] px-8 bg-white/10 hover:bg-white/20 border border-white/20 rounded-[10px] text-white font-bold text-[14px] transition-colors">
               Book an industry focused demo
             </Link>
+
           </div>
         </SlideUp>
       </div>

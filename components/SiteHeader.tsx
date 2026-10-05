@@ -21,6 +21,11 @@ export default function SiteHeader() {
   // Helper to check if any link inside the "More" dropdown is active
   const isMoreActive = ["/adunni-ai", "/insight", "/about", "/contact"].some(path => pathname.startsWith(path));
 
+  // Dynamic CTA values based on the current route
+  const isDemoPage = pathname === "/demo";
+  const ctaText = isDemoPage ? "Contact Sales" : "Book a Demo";
+  const ctaHref = isDemoPage ? "/contact" : "/demo";
+
   return (
     <header className="sticky top-0 z-50 w-full px-6 md:px-6 lg:px-[24px] border-b border-line-200 bg-white/95 backdrop-blur-[12px] dark:bg-navy-950/95 dark:border-white/10 transition-colors">
       <div className="max-w-[1302px] mx-auto h-[76px] flex items-center justify-between">
@@ -123,8 +128,8 @@ export default function SiteHeader() {
 
         {/* Right CTA - Desktop */}
         <div className="hidden lg:block">
-          <Link href="/demo" className="btn-primary h-10 px-5 hover:scale-105 transition-transform">
-            Book a Demo
+          <Link href={ctaHref} className="btn-primary h-10 px-5 hover:scale-105 transition-transform">
+            {ctaText}
           </Link>
         </div>
 
@@ -221,11 +226,11 @@ export default function SiteHeader() {
 
           <div className="mt-auto pt-8">
             <Link
-              href="/demo"
+              href={ctaHref}
               onClick={() => setIsMobileMenuOpen(false)}
               className="btn-primary w-full h-12 flex justify-center items-center"
             >
-              Book a Demo
+              {ctaText}
             </Link>
           </div>
         </div>

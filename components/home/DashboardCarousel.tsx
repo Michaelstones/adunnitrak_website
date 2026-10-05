@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { SlideUp } from "@/components/animations/SlideUp";
+import Link from "next/link";
 
 const cards = [
   {
@@ -175,8 +176,8 @@ export default function DashboardCarousel() {
               disabled={activeIndex === 0}
               aria-label="Previous slide"
               className={`flex items-center justify-center w-10 h-10 rounded-lg transition-opacity border-none ${activeIndex === 0
-                  ? "bg-[#525A72] opacity-50 cursor-not-allowed"
-                  : "bg-white cursor-pointer hover:opacity-80"
+                ? "bg-[#525A72] opacity-50 cursor-not-allowed"
+                : "bg-white cursor-pointer hover:opacity-80"
                 }`}
             >
               <svg
@@ -217,6 +218,21 @@ export default function DashboardCarousel() {
           </div>
         </SlideUp>
       </div>
+      <SlideUp className="bg-[#192F5D] w-[90%] mx-auto py-8 mt-12">
+        <div className="w-full flex items-center justify-center  flex-col ">
+          <h3 className="text-white">
+            See AdunnitTrak in Action
+          </h3>
+          <Link
+            href="https://app.adunnitrak.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#0F58F5] text-white py-4 px-6 rounded-lg hover:opacity-90 transition-opacity w-[80%] text-center mt-12"
+          >
+            Start Free Production Trial
+          </Link>
+        </div>
+      </SlideUp>
     </section>
   );
 }

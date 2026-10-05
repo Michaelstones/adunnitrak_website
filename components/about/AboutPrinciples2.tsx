@@ -21,6 +21,8 @@ const PRINCIPLE_CARDS: PrincipleCard[] = [
     },
 ];
 
+// 'https://www.image2url.com/r2/default/videos/1791063174162-c5978779-7b76-42a9-8203-43a9760b5d37.mp4'
+
 export default function AboutPrinciples2() {
     return (
         <section className="bg-[#071A33] py-16 lg:py-24">

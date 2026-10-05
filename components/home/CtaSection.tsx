@@ -25,11 +25,11 @@ export default function CtaSection() {
                 href="/demo"
                 className="inline-flex items-center justify-center bg-[#0F58F5] rounded-lg py-4 px-6 font-sans font-bold text-[16px] text-white leading-none whitespace-nowrap hover:opacity-90 transition-opacity w-full sm:w-auto shadow-md"
               >
-                Book a Personalized Demonstration
+                Book a Personalised Demonstration
               </Link>
               {/* Secondary: no fill, stroke #FFFFFF 1px, radius 8px */}
               <Link
-                href="/contact"
+                href="/solutions"
                 className="inline-flex items-center justify-center bg-transparent border border-white rounded-lg py-4 px-6 font-sans font-bold text-[16px] text-white leading-none whitespace-nowrap hover:bg-white/10 transition-colors w-full sm:w-auto"
               >
                 Explore Solutions

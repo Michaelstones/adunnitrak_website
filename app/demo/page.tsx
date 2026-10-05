@@ -17,13 +17,13 @@ export default function DemoPage() {
   return (
     <main className="flex min-h-screen flex-col w-full overflow-hidden bg-white">
       {/* <DemoHeroSection /> */}
-      <SlideUp><DemoBuiltAroundSection /></SlideUp>
+      {/* <SlideUp><DemoBuiltAroundSection /></SlideUp> */}
       {/* <SlideUp><DemoNotGenericAiSection /></SlideUp> */}
       <SlideUp><DemoRequestFormSection /></SlideUp>
-      <SlideUp><DemoFaqSection /></SlideUp>
-      <SlideUp><DemoAreasOfInterestSection /></SlideUp>
+      {/* <SlideUp><DemoAreasOfInterestSection /></SlideUp>
       <SlideUp><DemoJourneySection /></SlideUp>
-      <SlideUp><DemoParticipantsSection /></SlideUp>
+      <SlideUp><DemoParticipantsSection /></SlideUp> */}
+      <SlideUp><DemoFaqSection /></SlideUp>
     </main>
   );
 }

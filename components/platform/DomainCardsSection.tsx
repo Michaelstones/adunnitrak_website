@@ -90,12 +90,12 @@ export default function DomainCardsSection() {
                   {domain.desc}
                 </p>
 
-                <p className="flex flex-row items-center gap-2">
+                {/* <p className="flex flex-row items-center gap-2">
                   <Link href={`/${domain.link}`} className="text-[#0F58F5] hover:underline font-semibold">
                     Explore {domain.link}
                   </Link>
                   <ArrowRight className="w-4 h-4 text-[#0F58F5]" />
-                </p>
+                </p> */}
 
               </div>
             </StaggerItem>

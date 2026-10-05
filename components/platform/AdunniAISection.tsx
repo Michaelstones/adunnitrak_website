@@ -16,7 +16,7 @@ export default function AdunniAISection() {
     <section className="bg-[#071A33] py-16 md:py-24 px-5 md:px-8">
       <div className="max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          
+
           {/* Left Text Block */}
           <div className="lg:col-span-6 flex flex-col">
             <span className="font-sans font-bold text-[12px] leading-[16px] tracking-[0.06em] text-[#3FC3EE] uppercase">
@@ -32,7 +32,7 @@ export default function AdunniAISection() {
             <h4 className="font-sans font-semibold text-[16px] leading-[24px] text-white pt-8 mb-4">
               Potential authorised context
             </h4>
-            
+
             {/* List */}
             <div className="flex flex-col gap-3">
               {contextItems.map((item, idx) => (
@@ -76,25 +76,24 @@ export default function AdunniAISection() {
                 ))}
               </div>
             </div>
-            
+
             {/* Card 2 */}
             <div className="bg-white/5 border border-white/10 rounded-[14px] p-6 mt-4">
               <p className="font-sans font-normal text-[14px] leading-[20px] text-white/70">
                 Adunni AI operates within defined user permissions and authorised information boundaries. It supports professional judgement and approved workflows; it does not replace operational responsibility, engineering judgement, safety procedures or required approvals.
               </p>
             </div>
-            
+
             <div className="pt-6">
               <Link
                 href="/adunni-ai"
                 className="inline-flex items-center justify-center h-[56px] px-6 bg-[#0F58F5] rounded-lg font-sans font-bold text-[16px] text-white transition-opacity hover:opacity-90 w-full sm:w-auto gap-2"
               >
-                Explore Adunni AI 
-                <ArrowRight size={16} />
+                Explore Adunni AI
               </Link>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>

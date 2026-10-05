@@ -42,7 +42,6 @@ export default function PlatformHeroSection() {
                 className="w-full sm:w-auto inline-flex items-center justify-center h-14 px-6 bg-[#0F58F5] rounded-lg font-sans font-bold text-[16px] text-white transition-opacity hover:opacity-90 gap-2"
               >
                 Discuss Your Operational Needs
-                <ArrowRight size={16} />
               </Link>
               <Link
                 href="/demo"

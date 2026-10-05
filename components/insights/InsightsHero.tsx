@@ -95,7 +95,7 @@ export function InsightsHero() {
                     href="/add-insights"
                     className="h-[48px] px-6 bg-[#0F58F5] hover:bg-[#093593] text-white font-inter font-semibold text-[15px] rounded-[8px] transition-colors flex items-center justify-center"
                   >
-                    Explore latest insights
+                    Contribute to insights
                   </Link>
 
                   {/* Updated Link with Smooth Scroll onClick */}

@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { SlideUp } from "@/components/animations/SlideUp";
@@ -58,7 +57,6 @@ export const SolutionsHeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Link href="/demo" className="btn-primary w-full sm:w-auto group flex items-center justify-center">
               Book a live demo
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link href="#solutions" className="btn-outline-dark w-full sm:w-auto flex items-center justify-center">
               Explore solutions

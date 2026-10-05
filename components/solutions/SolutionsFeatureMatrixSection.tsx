@@ -87,8 +87,6 @@ export const SolutionsFeatureMatrixSection = () => {
                       <p className="t-body text-text-muted">{feature.response}</p>
                     </div>
 
-
-
                     <div className="bg-canvas-50 p-4 rounded-2xl border border-gray-200">
                       <div className="flex flex-col">
                         <div className="flex items-center gap-2 mb-2">
@@ -97,7 +95,7 @@ export const SolutionsFeatureMatrixSection = () => {
                         <p className="t-body-sm text-text-muted">{feature.modules}</p>
                       </div>
 
-                      <div className="flex flex-col">
+                      <div className="flex flex-col mt-4">
                         <span className="t-label text-text-main mb-2">Expected outcome</span>
                         <p className="t-body-sm text-text-muted">{feature.outcome}</p>
                       </div>
@@ -107,12 +105,13 @@ export const SolutionsFeatureMatrixSection = () => {
 
                 {/* Image Asset */}
                 <div className="flex-1 w-full">
-                  <div className="w-full aspect-[3/2]   flex items-center justify-center relative overflow-hidden group">
+                  <div className="w-full aspect-[3/2] flex items-center justify-center relative overflow-hidden group">
                     <Image
                       src={feature.image}
                       alt={feature.title}
                       fill
-                      className="object-contain hover:scale-110 transform transition-transform duration-500 ease-in-out "
+                      unoptimized // Prevents Next.js from rasterizing the SVG, keeping edges sharp
+                      className="object-contain hover:scale-110 transform transition-transform duration-500 ease-in-out"
                     />
                   </div>
                 </div>
