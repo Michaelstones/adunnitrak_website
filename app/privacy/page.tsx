@@ -10,68 +10,96 @@ export default function PrivacyPolicyPage() {
                         Privacy Policy
                     </h1>
                     <p className="text-[#5B6472] text-[14px]">
-                        <strong>Effective date:</strong> January 1, 2026 | <strong>Last updated:</strong> September 22, 2026
+                        <strong>Effective date:</strong> January 1, 2026 | <strong>Last updated:</strong> October 6, 2026
                     </p>
                 </div>
 
                 <div className="space-y-8 font-inter text-[#334155] text-[15px] leading-[26px]">
                     <p>
-                        This Privacy Policy explains how AdunniTrak handles Personal Data through the public website, web application, customer onboarding, support, sales, security, and Adunni AI features. It applies to website visitors, customer representatives, Authorized Users, and people whose Personal Data a Customer places in the Services.
+                        AdunniTrak ("we," "us," or "our") respects your privacy. This Privacy Policy details how we collect, use, disclose, and protect Personal Data in compliance with global data protection standards, including the Nigerian Data Protection Act (NDPA) and the Personal Information Protection and Electronic Documents Act (PIPEDA) of Canada.
                     </p>
 
                     <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">Personal Data we collect</h2>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">1. Personal Data We Collect</h2>
                         <ul className="list-disc pl-6 space-y-3">
-                            <li><strong>Account and contact data:</strong> Name, business email, telephone number, employer, job title, user role, profile details, and communication preferences.</li>
-                            <li><strong>Commercial data:</strong> Plan, quotation, contract, invoices, payment status, tax information, and transaction references. Payment card details are collected and tokenized securely through certified payment gateway partners; AdunniTrak does not store complete payment-card details on its servers.</li>
-                            <li><strong>Customer Data:</strong> Shift records, employee or contractor identifiers, production and downtime entries, work orders, inspection records, inventory records, reliability assessments, incident records, comments, photographs, videos, attachments, signatures, and audit history.</li>
-                            <li><strong>Technical and usage data:</strong> IP address, device and browser details, timestamps, authentication events, logs, pages or features used, diagnostic data, cookie identifiers, and approximate location derived from IP address.</li>
-                            <li><strong>Support and communications data:</strong> Emails, direct support messages, call notes, feedback, training records, and files supplied for troubleshooting.</li>
-                            <li><strong>AI interaction data:</strong> Prompts, retrieved context, generated responses, feedback, and related logs when Adunni AI is used.</li>
+                            <li><strong>Account & Identity Data:</strong> Full name, business email address, telephone number, employer, job title, and system role.</li>
+                            <li><strong>Commercial & Transactional Data:</strong> Billing details, tax identification numbers, and transaction history. We do not store full payment card details; these are tokenized and processed by PCI-DSS compliant third-party gateways.</li>
+                            <li><strong>Customer Operations Data:</strong> Information entered into the SaaS platform, including shift logs, worker identifiers, maintenance requests, and audit logs.</li>
+                            <li><strong>Technical & Telemetry Data:</strong> IP addresses, browser types, device identifiers, session metadata, authentication events, and feature usage analytics.</li>
+                            <li><strong>AI Interaction Data:</strong> Prompts submitted to Adunni AI, context parameters, and generated outputs.</li>
                         </ul>
-                        <p className="mt-4">
-                            Customers should configure forms and user practices to avoid collecting Personal Data that is unnecessary for industrial operations. Users must not enter special-category, sensitive, medical, biometric, financial-account, government-identifier, or children's data unless the Customer has confirmed a lawful need and appropriate safeguards.
+                    </section>
+
+                    <section>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">2. Legal Bases & How We Use Your Data</h2>
+                        <p className="mb-4">We process Personal Data based on the following legal grounds:</p>
+                        <ul className="list-disc pl-6 space-y-3">
+                            <li><strong>Contractual Necessity:</strong> To provision the Services, authenticate users, process payments, and provide customer support.</li>
+                            <li><strong>Legitimate Interests:</strong> To improve platform security, analyze usage trends, train our non-AI internal algorithms, and protect against fraud or abuse.</li>
+                            <li><strong>Legal Obligation:</strong> To comply with tax, corporate, and law enforcement mandates.</li>
+                            <li><strong>Consent:</strong> For direct marketing or specific non-essential cookie tracking (which you can withdraw at any time).</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">3. Data Sharing & Subprocessors</h2>
+                        <p>
+                            We do not sell your Personal Data. We only share information in the following strictly controlled scenarios:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-3 mt-4">
+                            <li><strong>Service Providers (Subprocessors):</strong> Cloud hosting providers (e.g., AWS, Azure), secure enterprise AI API providers, and communication tools. All subprocessors are bound by strict Data Processing Agreements (DPAs).</li>
+                            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, user data may be transferred under strict confidentiality obligations.</li>
+                            <li><strong>Legal Compliance:</strong> If compelled by a court of competent jurisdiction or valid legal mandate to disclose data to law enforcement.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">4. Adunni AI Processing</h2>
+                        <p>
+                            Adunni AI features transmit specific, scoped operational prompts to isolated enterprise LLM environments. <strong>We strictly prohibit our AI infrastructure partners from utilizing Customer Data or prompts to train their public or baseline models.</strong> AI processing logs are retained for a maximum of 30 days strictly for trust, safety, and abuse prevention before being permanently purged. We do not use automated processing to make final employment or legal decisions about individuals.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">Adunni AI and automated processing</h2>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">5. International Data Transfers</h2>
                         <p>
-                            Adunni AI assists users by processing prompts and authorized Customer Data to produce summaries, suggestions, or answers. Prompts and authorized operational records are transmitted securely to enterprise-grade AI processing infrastructure for analysis. Adunni AI is not intended to make final decisions about individuals, employment, safety, discipline, or legal rights. We do not knowingly use solely automated processing to make a decision that produces legal or similarly significant effects on an individual. Customers must provide appropriate notice and human review when they use AI-assisted output in their own processes.
+                            AdunniTrak operates across Nigeria and Canada. Data may be stored or processed in regions outside your home jurisdiction. Where data is transferred internationally (e.g., from Nigeria to North American data centers), we employ recognized transfer mechanisms, such as Standard Contractual Clauses (SCCs) and adherence to local adequacy decisions, to ensure continuous legal protection.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">International transfers</h2>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">6. Data Retention & Export</h2>
                         <p>
-                            The Services may involve processing in Canada, Nigeria, and other jurisdictions where our approved cloud infrastructure and service partners operate. For transfers from Nigeria or another jurisdiction that restricts international transfers, we use lawful transfer mechanisms and implement appropriate technical and contractual safeguards. Information processed across regions may be accessible to authorized courts, law-enforcement, or regulatory authorities under applicable local laws.
+                            We retain operational data for the duration of your active subscription. Upon contract termination, Customers have a 30-day window to request a full structured data export (CSV, JSON). Following this period, AdunniTrak will systematically cryptographically shred or irreversibly anonymize the data, barring data required to be kept for legal, tax, or regulatory audit compliance.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">Retention & Export</h2>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">7. Your Data Privacy Rights</h2>
+                        <p className="mb-4">Depending on your jurisdiction (e.g., NDPA, PIPEDA), you have the right to:</p>
+                        <ul className="list-disc pl-6 space-y-3">
+                            <li><strong>Access:</strong> Request a copy of the Personal Data we hold about you.</li>
+                            <li><strong>Rectification:</strong> Correct inaccurate or incomplete data.</li>
+                            <li><strong>Erasure (Right to be Forgotten):</strong> Request deletion of your data, subject to legal retention constraints.</li>
+                            <li><strong>Restriction & Objection:</strong> Opt-out of marketing communications or object to specific processing types.</li>
+                            <li><strong>Portability:</strong> Receive your data in a machine-readable format.</li>
+                        </ul>
+                        <p className="mt-4">To exercise these rights, email <a href="mailto:privacy@adunnitrak.com" className="text-[#0F58F5] hover:underline">privacy@adunnitrak.com</a>. We will respond within 30 days.</p>
+                    </section>
+
+                    <section>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">8. Children's Privacy</h2>
                         <p>
-                            We retain Personal Data only as long as reasonably necessary for the purposes described, Customer instructions, the subscription term, security, backups, dispute resolution, and legal, tax, or audit obligations. Customer login access will ordinarily end when the subscription terminates.
-                        </p>
-                        <p className="mt-4">
-                            The Customer may request a manual export of Customer Data in commonly readable formats (such as CSV, Excel, PDF, or JSON) by emailing info@adunnitrak.com within 30 calendar days after termination. If the Customer does not request an export within the 30-day period, AdunniTrak may delete or de-identify Customer Data from active systems, subject to applicable law, contractual retention requirements, and secure backup rotation cycles.
+                            Our Services are strictly designed for industrial and corporate environments. We do not knowingly collect Personal Data from individuals under the age of 18.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">Security and breaches</h2>
+                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">9. Contact the Privacy Team</h2>
                         <p>
-                            We use administrative, technical, and physical safeguards proportionate to the sensitivity and risk, which include rigorous access controls, multi-tier authentication, robust data encryption in transit and at rest, logical tenant environment separation, comprehensive activity logging, automated backups, and structured incident response procedures.
-                        </p>
-                        <p className="mt-4">
-                            No system is completely secure. We will assess suspected security events and notify affected Customers, individuals, or regulators when required by applicable law and contract.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 className="font-bold text-[20px] text-[#0B1220] mt-8 mb-4">Contact</h2>
-                        <p>
-                            Privacy requests, complaints, and suspected privacy or security breaches may be sent to <a href="mailto:admin@adunnitrak.com" className="text-[#0F58F5] hover:underline">admin@adunnitrak.com</a>. Website: https://adunnitrak.com.
+                            For privacy inquiries, Data Subject Access Requests (DSARs), or complaints, contact our Data Protection Officer (DPO) at:<br />
+                            <strong>Email:</strong> <a href="mailto:info@adunnitrak.com" className="text-[#0F58F5] hover:underline">info@adunnitrak.com</a><br />
+                            <strong>Website:</strong> https://adunnitrak.com
                         </p>
                     </section>
                 </div>
