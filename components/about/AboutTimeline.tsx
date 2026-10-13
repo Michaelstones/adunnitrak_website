@@ -1,4 +1,3 @@
-
 "use client";
 
 import { SlideUp } from "@/components/animations/SlideUp";
@@ -6,46 +5,61 @@ import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
 
 interface TimelineItem {
-  year: string;
+  date: string;
   title: string;
   body: string;
 }
 
 const TIMELINE_ITEMS: TimelineItem[] = [
   {
-    year: "2014",
-    title: "Founded in Lagos, Nigeria",
-    body: "AdunniTrak was established with a mandate to bring structured operational intelligence to African industrial facilities starting with the oil & gas sector.",
+    date: "July 1, 2024",
+    title: "The catalyst",
+    body: "At 5:30 a.m., illegible handwritten handover notes left a team uncertain about an unresolved operational issue. Approximately two and a half hours of unnecessary downtime inspired the idea for clearer digital records and better shift communication.",
   },
   {
-    year: "2016",
-    title: "First platform deployment",
-    body: "The first full platform deployment went live at a mid-sized refinery in the Niger Delta, covering operations, maintenance, and inventory management.",
+    date: "October 2024",
+    title: "AdunniTrak takes its name",
+    body: "The digital handover initiative becomes AdunniTrak, giving the developing solution a distinct identity.",
   },
   {
-    year: "2018",
-    title: "Expanded to power generation",
-    body: "Platform adoption grew into the power generation sector, with multi-site implementations at independent power producers across Nigeria.",
+    date: "January 2025",
+    title: "Development expands",
+    body: "The initiative grows beyond shift handovers to include structured workflows, reporting and broader operational coverage.",
   },
   {
-    year: "2020",
-    title: "Adunni AI introduced",
-    body: "The Adunni AI assistant layer was launched — enabling natural-language querying of operational data and automated anomaly detection across monitored assets.",
+    date: "May 2025",
+    title: "The operational vision strengthens",
+    body: "Industry research and continued operational experience reinforce the need for a purpose-built operational intelligence platform.",
   },
   {
-    year: "2022",
-    title: "North American entity established",
-    body: "AdunniTrak Solutions Inc. was incorporated in London, Ontario, Canada — opening access to North American industrial markets and enabling global cloud infrastructure.",
+    date: "October 2025",
+    title: "Cloud-based development",
+    body: "AdunniTrak is rebuilt using Google AppSheet to support digital data capture and connected operational workflows.",
   },
   {
-    year: "2024",
-    title: "Platform 2.0 — full module suite",
-    body: "The complete six-module suite (Operations, Maintenance, Reliability, Inventory, Workforce, and Adunni AI) launched simultaneously — marking the platform's maturity.",
+    date: "March 2026",
+    title: "A professional milestone",
+    body: "Founder Agboola Shonekan earns the Certified Engineering Technician (C.Tech.) designation following OACETT’s acceptance of his technical report on production tracking and shift communication.",
   },
   {
-    year: "2026",
-    title: "Serving operations across 3 continents",
-    body: "AdunniTrak now supports industrial operations in Nigeria, Ghana, and Canada — with active expansion across West Africa and the Middle East.",
+    date: "April 2026",
+    title: "A unified platform",
+    body: "AdunniTrak evolves into a unified operational intelligence platform connecting operations, maintenance, reliability, inventory and reporting.",
+  },
+  {
+    date: "May 2026",
+    title: "Canadian incorporation",
+    body: "AdunniTrak Solutions Inc. is incorporated in Canada, establishing the business’s Canadian corporate entity.",
+  },
+  {
+    date: "June 2026",
+    title: "Adunni AI is introduced",
+    body: "AI capabilities are added to help teams explore operational history, access relevant knowledge and support informed decisions.",
+  },
+  {
+    date: "September 2026",
+    title: "Nigerian incorporation and facility configuration",
+    body: "AdunniTrak Solutions Nigeria Limited is incorporated in Nigeria. The team is configuring the platform for Ajaokuta Steel Company Limited, aligning workflows with departmental requirements.",
   },
 ];
 
@@ -62,14 +76,14 @@ export default function AboutTimeline() {
               From an observed problem to a connected platform
             </p>
             <h2 className="mt-[16px] font-inter font-extrabold text-[32px] md:text-[40px] leading-[1.2] tracking-[-0.01em] text-[#0F1424] whitespace-nowrap">
-              The AdunniTrak journey
+              The Evolution of AdunniTrak
             </h2>
           </SlideUp>
 
           {/* Right: Timeline rail — 7 cols (col 6-12) */}
           <div className="lg:col-span-7 lg:col-start-6 relative pl-[40px] lg:pl-[64px]">
 
-            {/* Vertical line — Figma: 2px wide, #ECEDEE fill, positioned at x=21 */}
+            {/* Vertical line — Figma: 2px wide, #ECEDEE fill, positioned at x=16 (mobile) and x=21 (desktop) */}
             <div className="absolute top-[8px] bottom-0 left-[16px] lg:left-[21px] w-[2px] bg-[#ECEDEE]" />
 
             <StaggerContainer staggerChildren={0.1}>
@@ -80,8 +94,8 @@ export default function AboutTimeline() {
               </StaggerItem>
 
               {/* Remaining items — 32px top padding */}
-              {TIMELINE_ITEMS.slice(1).map((item) => (
-                <StaggerItem key={item.year} className="relative pt-[32px]">
+              {TIMELINE_ITEMS.slice(1).map((item, index) => (
+                <StaggerItem key={index} className="relative pt-[32px]">
                   <TimelineDot />
                   <TimelineContent item={item} />
                 </StaggerItem>
@@ -95,13 +109,11 @@ export default function AboutTimeline() {
 }
 
 function TimelineDot({ isFirst }: { isFirst?: boolean }) {
-  // Mobile rail padding is 40px, so left=-24px. Desktop rail padding is 64px, so left=-48px.
-  // Center of the line is at x=22 on desktop, so dot (w-12) should be at x=16. 
-  // 16 - 64 = -48px for desktop. 
-  // Mobile: line at 16, center 17, dot left 11. 11 - 40 = -29px. We'll use -29px for mobile, -48px for desktop.
+  // Mobile rail padding is 40px, so left=-24px relative to start. Line center is at 17px. Dot offset needs to be 40px - 17px = 23px + 10px radius = 33px.
+  // Desktop rail padding is 64px, Line center is at 22px. Dot offset needs to be 64px - 22px = 42px + 10px radius = 52px.
   return (
     <div
-      className={`absolute flex items-center justify-center left-[-10px] lg:left-[-52px] w-[20px] rounded-full h-[20px] ${isFirst ? "top-[4px]" : "top-[36px]"}`}
+      className={`absolute flex items-center justify-center left-[-33px] lg:left-[-52px] w-[20px] rounded-full h-[20px] ${isFirst ? "top-[4px]" : "top-[36px]"}`}
     >
       <div className="w-[16px] h-[16px] rounded-full border-[5px] border-[#3FC3EE] bg-[#FFFFFF]" />
     </div>
@@ -112,7 +124,7 @@ function TimelineContent({ item }: { item: TimelineItem }) {
   return (
     <div className="flex flex-col gap-[4px] max-w-[688px]">
       <span className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
-        {item.year}
+        {item.date}
       </span>
       <h3 className="text-[16px] leading-[24px] font-bold text-[#0B1220] font-inter">
         {item.title}

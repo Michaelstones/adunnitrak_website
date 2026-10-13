@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import PricingHero from "@/components/pricing/PricingHero";
 import PricingCards from "@/components/pricing/PricingCards";
 import FeatureComparisonTable from "@/components/pricing/FeatureComparisonTable";
@@ -12,26 +11,15 @@ import PricingTrustBar from "@/components/pricing/PricingTrustBar";
 import OnboardingEnterpriseSplit from "@/components/pricing/OnboardingEnterpriseSplit";
 import OptionalHardwareSection from "@/components/pricing/OptionalHardwareSection";
 
-
-
-
 export default function PricingPage() {
-
-
   return (
     <>
-
-
       <main>
-        {/* 1. Hero + billing toggle + region selector */}
-        <PricingHero
+        {/* 1. Hero */}
+        <PricingHero />
 
-        />
-
-        {/* 2. Pricing cards (3 tiers) */}
-        <PricingCards
-
-        />
+        {/* 2. Pricing cards (3 tiers + billing cycle toggle) */}
+        <PricingCards />
 
         {/* 3. Feature comparison table */}
         <FeatureComparisonTable />

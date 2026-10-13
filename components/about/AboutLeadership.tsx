@@ -40,7 +40,7 @@ const LEADERS: LeaderCard[] = [
     id: "leader-4",
     name: "Michael Oluwasegun Agbaje",
     title: "Lead Software Engineer",
-    imageSrc: "/images/leader4.png",
+    imageSrc: "/images/michael.png",
     responsibility: "Software architecture, application development, database design and systems integration.",
     bio: "Michael leads the technical development of the AdunniTrak application and translates operational requirements into structured digital workflows that support frontline teams, technical personnel and organisational leadership."
   },

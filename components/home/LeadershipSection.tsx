@@ -29,7 +29,7 @@ const leaders = [
     name: "Michael Oluwasegun Agbaje",
     role: "Lead Software Architect",
     bio: "Connects platform capabilities with client operational needs, drawing on decades of facility management experience.",
-    image: "/images/leader4.png",
+    image: "/images/michael.png",
   },
 ];
 

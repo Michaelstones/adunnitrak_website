@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export type PlanRegion = "nigeria" | "canada" | "international";
+export type PlanRegion = "nigeria" | "international";
 
 export function useLocalPricing() {
   const [region, setRegion] = useState<PlanRegion>("international");
@@ -10,33 +10,64 @@ export function useLocalPricing() {
 
   useEffect(() => {
     setIsMounted(true);
-    try {
-      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      
-      const isCanada = [
-        "America/St_Johns", "America/Halifax", "America/Glace_Bay",
-        "America/Moncton", "America/Goose_Bay", "America/Blanc-Sablon",
-        "America/Toronto", "America/Nipigon", "America/Thunder_Bay",
-        "America/Iqaluit", "America/Pangnirtung", "America/Atikokan",
-        "America/Winnipeg", "America/Rainy_River", "America/Resolute",
-        "America/Rankin_Inlet", "America/Regina", "America/Swift_Current",
-        "America/Edmonton", "America/Cambridge_Bay", "America/Yellowknife",
-        "America/Inuvik", "America/Creston", "America/Dawson_Creek",
-        "America/Fort_Nelson", "America/Vancouver", "America/Whitehorse",
-        "America/Dawson"
-      ].includes(timeZone) || timeZone.startsWith("Canada/");
 
-      if (timeZone.startsWith("Africa/")) {
-        setRegion("nigeria");
-      } else if (isCanada) {
-        setRegion("canada");
-      } else {
-        setRegion("international"); // Default for everywhere else (USD)
+    // 1. URL parameter override for testing/preview (e.g., ?region=nigeria or ?currency=usd)
+    try {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const urlRegion = params.get("region")?.toLowerCase();
+        const urlCurrency = params.get("currency")?.toLowerCase();
+
+        if (urlRegion === "nigeria" || urlCurrency === "ngn") {
+          setRegion("nigeria");
+          return;
+        }
+        if (urlRegion === "international" || urlCurrency === "usd") {
+          setRegion("international");
+          return;
+        }
       }
-    } catch (error) {
-      setRegion("international");
+    } catch {
+      // Ignore URL parsing errors
     }
+
+    // 2. Client-side Timezone Detection (instant, zero network delay)
+    // In IANA tz database, Nigeria is mapped to "Africa/Lagos".
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase();
+      const isNigeriaTz =
+        tz === "africa/lagos" ||
+        tz.includes("lagos") ||
+        tz.includes("w. central africa");
+
+      if (isNigeriaTz) {
+        setRegion("nigeria");
+        return;
+      }
+    } catch (e) {
+      console.warn("Timezone detection error:", e);
+    }
+
+    // 3. Platform Geo-headers verification (e.g. Vercel / Cloudflare edge headers via /api/geo)
+    fetch("/api/geo")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.country) {
+          if (data.country === "NG") {
+            setRegion("nigeria");
+          } else {
+            setRegion("international");
+          }
+        }
+      })
+      .catch(() => {
+        // Fallback silently if API is unreachable
+      });
   }, []);
 
-  return { region, isMounted };
+  return {
+    region,
+    isNigeria: region === "nigeria",
+    isMounted,
+  };
 }

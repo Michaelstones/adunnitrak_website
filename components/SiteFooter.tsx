@@ -131,7 +131,7 @@ export default function SiteFooter() {
               <p className="font-sans font-normal text-[13px] md:text-[14px] text-white/70">
                 +1 226 365 7308
                 <br />
-                +234 803 458 7309
+                +234 8067785713
               </p>
               <Link
                 href="mailto:info@adunnitrak.com"

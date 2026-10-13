@@ -26,19 +26,19 @@ const VIDEOS: VideoData[] = [
     category: "Adunni AI",
     title: "Connected platform overview",
     duration: "Duration to be confirmed",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // Dummy video
+    videoUrl: "https://videotourl.com/videos/1791896577543-12b07719-024d-4535-9917-0c277e509a5a.mp4", // Dummy video
   },
   {
     category: "Workflow walkthrough",
     title: "From downtime event to maintenance and reliability action",
     duration: "Duration to be confirmed",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // Dummy video
+    videoUrl: "https://videotourl.com/videos/1791896643820-089dc05e-ba22-413f-8bdd-303d2050c088.mp4", // Dummy video
   },
   {
     category: "Adunni AI",
     title: "How Adunni AI uses approved operational context",
     duration: "Duration to be confirmed",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // Dummy video
+    videoUrl: "https://videotourl.com/videos/1791897148550-27d05b08-c026-4c5d-963f-8338f8e0d5fd.mp4", // Dummy video
   },
 ];
 

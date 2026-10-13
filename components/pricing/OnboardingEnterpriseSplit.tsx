@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useLocalPricing } from "@/hooks/useLocalPricing";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 type PlanRegion = "nigeria" | "international";
@@ -49,21 +49,7 @@ const ENTERPRISE_STEPS = [
 
 /* ─── Component ──────────────────────────────────────────── */
 export default function OnboardingEnterpriseSplit() {
-    const [planRegion, setPlanRegion] = useState<PlanRegion>("international");
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-        try {
-            // Auto-detect location based on timezone
-            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            if (tz && tz.startsWith("Africa")) {
-                setPlanRegion("nigeria");
-            }
-        } catch (e) {
-            console.warn("Timezone detection failed", e);
-        }
-    }, []);
+    const { region: planRegion, isMounted } = useLocalPricing();
 
     return (
         <section className="bg-[#EEF1F6] py-16 lg:py-24">

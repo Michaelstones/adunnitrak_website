@@ -127,8 +127,25 @@ export default function SiteHeader() {
         </nav>
 
         {/* Right CTA - Desktop */}
-        <div className="hidden lg:block">
-          <Link href={ctaHref} className="btn-primary h-10 px-5 hover:scale-105 transition-transform">
+        <div className="hidden lg:flex items-center gap-4">
+          <Link 
+            href="https://app.adunnitrak.com/sign-in" 
+            target='_blank'
+            className="t-body-sm font-medium  text-action-primary dark:text-slate-300 transition-colors"
+          >
+            Log in
+          </Link>
+          <Link 
+            href="https://app.adunnitrak.com/sign-up" 
+            target='_blank'
+            className="flex items-center justify-center h-10 px-5 rounded-lg text-sm font-medium bg-canvas-50 dark:bg-navy-800 text-ink-900 dark:text-white hover:bg-line-100 dark:hover:bg-navy-700 transition-colors border border-line-200 dark:border-white/10"
+          >
+            Sign up
+          </Link>
+          <Link 
+            href={ctaHref} 
+            className="btn-primary h-10 px-5 flex items-center justify-center rounded-lg hover:scale-105 transition-transform"
+          >
             {ctaText}
           </Link>
         </div>
@@ -224,11 +241,28 @@ export default function SiteHeader() {
             </Link>
           </div>
 
-          <div className="mt-auto pt-8">
+          {/* Auth & CTA - Mobile */}
+          <div className="mt-auto pt-8 flex flex-col gap-3 pb-4">
+            <div className="flex gap-3">
+              <Link
+                href="https://app.adunnitrak.com/sign-in"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex-1 h-12 flex justify-center items-center rounded-lg border border-line-200 dark:border-white/10 t-body-sm font-medium text-ink-900 dark:text-white hover:bg-canvas-50 dark:hover:bg-navy-800 transition-colors"
+              >
+                Log in
+              </Link>
+              <Link
+                href="https://app.adunnitrak.com/sign-up"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex-1 h-12 flex justify-center items-center rounded-lg bg-canvas-50 dark:bg-navy-800 t-body-sm font-medium text-ink-900 dark:text-white hover:bg-line-100 dark:hover:bg-navy-700 transition-colors"
+              >
+                Sign up
+              </Link>
+            </div>
             <Link
               href={ctaHref}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-primary w-full h-12 flex justify-center items-center"
+              className="btn-primary w-full h-12 flex justify-center items-center rounded-lg"
             >
               {ctaText}
             </Link>

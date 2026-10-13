@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { SlideUp } from "@/components/animations/SlideUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
+import { useLocalPricing } from "@/hooks/useLocalPricing";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 type BillingCycle = "monthly" | "annual";
@@ -119,21 +120,7 @@ const PLANS: Plan[] = [
 /* ─── Component ──────────────────────────────────────────── */
 export default function PricingCards() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
-  const [planRegion, setPlanRegion] = useState<PlanRegion>("international");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    try {
-      // Auto-detect location based on timezone
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz && tz.startsWith("Africa")) {
-        setPlanRegion("nigeria");
-      }
-    } catch (e) {
-      console.warn("Timezone detection failed, defaulting to international", e);
-    }
-  }, []);
+  const { region: planRegion, isMounted } = useLocalPricing();
 
   function getPrice(plan: Plan): string {
     if (plan.nigeriaMonthly === null && plan.intlMonthly === null) return "Custom pricing";
@@ -156,39 +143,19 @@ export default function PricingCards() {
         <SlideUp className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="flex flex-col gap-2 max-w-[720px]">
             <p className="text-[12px] leading-[16px] tracking-[0.06em] font-bold uppercase text-[#0F58F5] font-inter">
-              Select your pricing region
+              Pricing plans
             </p>
             <h2 className="text-[#0B1220] font-inter font-extrabold text-[28px] md:text-[36px] leading-[1.2] tracking-[-0.01em]">
               View pricing for your organisation
             </h2>
             <p className="mt-2 text-[13px] leading-[20px] font-normal text-[#7C8798] font-inter">
-              Save 10% with annual billing on eligible Nigerian plans. International
-              annual pricing is displayed separately for each plan. All subscription
+              Save 10% with annual billing on eligible plans. All subscription
               prices are charged per site and exclude applicable taxes.
             </p>
           </div>
 
-          {/* Toggles */}
-          <div className="flex items-center gap-4">
-            {/* Region Toggle */}
-            <div className="flex items-center bg-white border border-[#E2E6ED] rounded-full p-1 shadow-sm">
-              <button
-                onClick={() => setPlanRegion("nigeria")}
-                className={`px-4 py-1.5 text-[13px] font-semibold rounded-full transition-colors ${planRegion === "nigeria" ? "bg-[#0F58F5] text-white" : "text-[#5B6472] hover:text-[#0B1220]"
-                  }`}
-              >
-                Nigeria
-              </button>
-              <button
-                onClick={() => setPlanRegion("international")}
-                className={`px-4 py-1.5 text-[13px] font-semibold rounded-full transition-colors ${planRegion === "international" ? "bg-[#0F58F5] text-white" : "text-[#5B6472] hover:text-[#0B1220]"
-                  }`}
-              >
-                International
-              </button>
-            </div>
-
-            {/* Billing Toggle */}
+          {/* Billing Toggle */}
+          <div className="flex items-center">
             <div className="flex items-center bg-white border border-[#E2E6ED] rounded-full p-1 shadow-sm">
               <button
                 onClick={() => setBillingCycle("monthly")}

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { SlideUp } from "@/components/animations/SlideUp";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
+import { useLocalPricing } from "@/hooks/useLocalPricing";
 
 /* ─── Types & Data ─────────────────────────────────────────────── */
 type PlanRegion = "nigeria" | "international";
@@ -49,21 +49,7 @@ const USERS_CARDS = [
 
 /* ─── Component ──────────────────────────────────────────── */
 export default function PlanDetailsSplit() {
-  const [planRegion, setPlanRegion] = useState<PlanRegion>("international");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    try {
-      // Auto-detect location based on timezone
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      if (tz && tz.startsWith("Africa")) {
-        setPlanRegion("nigeria");
-      }
-    } catch (e) {
-      console.warn("Timezone detection failed", e);
-    }
-  }, []);
+  const { region: planRegion, isMounted } = useLocalPricing();
 
   return (
     <section className="bg-[#F9FAFB] py-16 lg:py-24 border-t border-[#ECEDEE]">
