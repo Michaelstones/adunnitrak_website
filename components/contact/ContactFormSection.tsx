@@ -248,7 +248,7 @@ export const ContactFormSection = () => {
             <h4 className="text-[15px] leading-[22px] font-bold text-[#0B1220] mb-2">Phone</h4>
             <div className="text-[13px] leading-[22px] text-[#5B6472]">
               <span className='text-[#0F58F5] inline-block'>+1 226 385 7309</span> (Canada)<br />
-              <span className='text-[#0F58F5] inline-block mt-1'>+234 803 458 7309</span> (Nigeria)
+              <span className='text-[#0F58F5] inline-block mt-1'>+234 8067785713</span> (Nigeria)
             </div>
           </div>
 

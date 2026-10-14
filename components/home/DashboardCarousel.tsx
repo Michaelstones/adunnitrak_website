@@ -221,7 +221,7 @@ export default function DashboardCarousel() {
       <SlideUp className="bg-[#192F5D] w-[90%] mx-auto py-8 mt-12">
         <div className="w-full flex items-center justify-center  flex-col ">
           <h3 className="text-white">
-            See AdunnitTrak in Action
+            See AdunniTrak in Action
           </h3>
           <Link
             href="https://app.adunnitrak.com"

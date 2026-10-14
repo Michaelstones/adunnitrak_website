@@ -45,7 +45,7 @@ export default function HeroSection() {
 
             <SlideUp delay={0.2}>
               <h1 className="font-inter font-extrabold text-[36px] md:text-[48px] xl:text-[42px] 2xl:text-[52px] leading-[1.1] tracking-[-0.02em] text-white mb-6">
-                One intelligent platform built around your operation
+                One unified platform built around your industrial operation. Connect operational teams, equipment, workflows and information for better visibility and coordination.
               </h1>
             </SlideUp>
 

@@ -39,29 +39,13 @@ export default function SiteFooter() {
                 Operation
               </Link>
               <Link
-                href="/maintenance"
+                href="/solutions"
                 className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
               >
                 Maintenance
               </Link>
-              <Link
-                href="/reliability"
-                className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
-              >
-                Reliability and analytics
-              </Link>
-              <Link
-                href="/inventory"
-                className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
-              >
-                Inventory and resources
-              </Link>
-              <Link
-                href="/workforce"
-                className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
-              >
-                Workforce
-              </Link>
+
+
               <Link
                 href="/adunni-ai"
                 className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
@@ -82,22 +66,10 @@ export default function SiteFooter() {
                 About us
               </Link>
               <Link
-                href="/story"
-                className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
-              >
-                Our story
-              </Link>
-              <Link
-                href="/leadership"
-                className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
-              >
-                Leadership
-              </Link>
-              <Link
                 href="/insight"
                 className="font-sans font-normal text-[13px] md:text-[14px] text-white/70 hover:text-white transition-colors"
               >
-                Insight
+                Insights
               </Link>
               <Link
                 href="/contact"
@@ -129,7 +101,7 @@ export default function SiteFooter() {
                 2, Babatope Ajakaiye Crescent, Jahi, FCT Abuja, Nigeria
               </p>
               <p className="font-sans font-normal text-[13px] md:text-[14px] text-white/70">
-                +1 226 365 7308
+                +1 226 365 7309
                 <br />
                 +234 8067785713
               </p>

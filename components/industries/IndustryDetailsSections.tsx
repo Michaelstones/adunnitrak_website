@@ -12,7 +12,6 @@ interface IndustryDetail {
   applicationTitle: string;
   applicationText: string;
   ctaText: string;
-  ctaLink: string;
   bgWhite?: boolean;
 }
 
@@ -33,7 +32,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can connect production reporting, downtime events, maintenance requests and shift logs across the quarry and processing plant.",
     ctaText: "Explore for quarries",
-    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -52,7 +50,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can provide a connected record of production, delays, maintenance response and shift communication across mining and processing areas.",
     ctaText: "Explore for mining",
-    ctaLink: "/demo",
     bgWhite: true
   },
   {
@@ -71,7 +68,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can connect production activity, downtime analysis, maintenance and reliability information across the facility.",
     ctaText: "Explore for cement",
-    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -90,7 +86,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "AdunniTrak can be configured around the departmental structure of an integrated site, standardising communication and performance visibility.",
     ctaText: "Explore for steel",
-    ctaLink: "/demo",
     bgWhite: true
   },
   {
@@ -109,7 +104,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "Terminology such as downtime, production and output can be replaced with availability, dispatch and generation to match the specific operating model.",
     ctaText: "Explore for power",
-    ctaLink: "/demo",
     bgWhite: false
   },
   {
@@ -128,7 +122,6 @@ const industryDetails: IndustryDetail[] = [
     applicationTitle: "How AdunniTrak can be applied",
     applicationText: "The platform can be configured around production lines and work centres to coordinate downtime, maintenance response and shift continuity.",
     ctaText: "Explore for manufacturing",
-    ctaLink: "/demo",
     bgWhite: true
   }
 ];
@@ -170,24 +163,14 @@ export const IndustryDetailsSections = () => {
             </div>
 
             {/* Right Content (4 columns) */}
-            <div className="flex flex-col item-center text-left lg:col-span-5 xl:col-span-4  lg:pl-12 p-3  bg-white rounded-sm border border-1 drop-shadow-md">
+            <div className="flex flex-col place-content-center text-left lg:col-span-5 xl:col-span-4  lg:pl-12 p-3  bg-white rounded-sm border border-1 drop-shadow-md">
               <h4 className="text-[18px] font-bold text-[#0B1220] mb-4">
                 {detail.applicationTitle}
               </h4>
               <p className="text-[16px] leading-[26px] text-[#5B6472] mb-8">
                 {detail.applicationText}
               </p>
-              <Button className="bg-[#1656E8] flex items-center gap-2 w-fit h-auto py-3 rounded-sm">
 
-
-                <Link
-                  href={detail.ctaLink}
-                  className="inline-flex text-white text-[14px] font-bold "
-                >
-                  {detail.ctaText}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
             </div>
 
           </div>

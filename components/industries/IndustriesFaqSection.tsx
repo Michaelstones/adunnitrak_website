@@ -10,7 +10,7 @@ export const IndustriesFaqSection = () => {
     },
     {
       q: "Does AdunniTrak work differently in every industry?",
-      a: "The platform's core purpose remains consistent. It connects production, downtime, and maintenance. However, the terminology and equipment structure is adapted to match each industry's specific workflow."
+      a: "The platform's core purpose remains consistent. It connects production, downtime, and maintenance. However, the terminology and equipment structure are adapted to match each industry's specific workflow."
     },
     {
       q: "Can AdunniTrak support a facility without a production line?",
@@ -80,9 +80,8 @@ export const IndustriesFaqSection = () => {
                 </button>
 
                 <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
+                  className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
                 >
                   <div className="overflow-hidden">
                     <div className="pb-6">

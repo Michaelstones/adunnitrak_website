@@ -9,7 +9,7 @@ export const IndustriesDeploymentSection = () => {
     {
       step: "Step 2",
       title: "Workflow assessment",
-      desc: "Understand how production, downtime, maintenance, and shift communication occurs."
+      desc: "Understand how production, downtime, maintenance and shift communication occur."
     },
     {
       step: "Step 3",

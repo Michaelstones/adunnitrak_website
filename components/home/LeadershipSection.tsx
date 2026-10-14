@@ -16,19 +16,19 @@ const leaders = [
   {
     name: "Eyitayo Fajinmi",
     role: "Director of Industry Strategy",
-    bio: "Oversees system architecture, security and technical operations, ensuring enterprise reliability and scalability.",
+    bio: "Guides industrial workflows, reliability strategy and operational implementation.",
     image: "/images/akin.jpeg",
   },
   {
-    name: "Isaac Adejuwo",
+    name: "'Isaac Adejuwon",
     role: "Chief Technology Officer",
-    bio: "Drives the development of Adunni AI, focusing on practical industrial intelligence and operational insights.",
+    bio: "Leads technology strategy, cybersecurity, cloud infrastructure and enterprise architecture.",
     image: "/images/isaac.jpeg",
   },
   {
     name: "Michael Oluwasegun Agbaje",
-    role: "Lead Software Architect",
-    bio: "Connects platform capabilities with client operational needs, drawing on decades of facility management experience.",
+    role: " Lead Software Engineer",
+    bio: "Leads software architecture, application development, database design and systems integration.",
     image: "/images/michael.png",
   },
 ];
